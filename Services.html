@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HUBWAY | خدماتنا اللوجستية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #071426;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a1a2f; }
+    ::-webkit-scrollbar-thumb { background: #ff8800; border-radius: 10px; }
+
+    /* Navbar - starts transparent */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 18px 0;
+      transition: 0.4s ease;
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: none;
+    }
+    .navbar.scrolled {
+      background: rgba(7, 20, 38, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 136, 0, 0.2);
+    }
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    /* عكس ترتيب اللوجو والزرار */
+    .nav-content .logo {
+      order: 2; /* اللوجو يظهر في النهاية (يسار الشاشة) */
+    }
+    .nav-content .contact-btn-nav {
+      order: 0; /* الزر يظهر في البداية (يمين الشاشة) */
+    }
+    .nav-content .nav-links {
+      order: 1; /* الروابط في المنتصف */
+    }
+    .mobile-menu-btn {
+      order: 0; /* زر الموبايل بجانب الزر الأصلي */
+      margin-left: 10px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(255,136,0,0.4));
+    }
+    .logo h2 {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #ffbc6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p { color: #cbd5e6; font-size: 11px; }
+    .nav-links { display: flex; gap: 38px; }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 17px;
+      position: relative;
+      color: white;
+      transition: 0.3s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: #ff8800; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: #ff8800;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .contact-btn-nav {
+      background: #ff8800;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      transition: 0.3s;
+    }
+    .contact-btn-nav:hover { transform: translateY(-3px); background: #ff9d24; }
+    .mobile-menu-btn {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100%;
+      background: rgba(7, 20, 38, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      transition: 0.4s;
+      padding: 100px 30px 40px;
+      border-left: 1px solid rgba(255,136,0,0.3);
+    }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav .close-menu {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .mobile-nav ul { display: flex; flex-direction: column; gap: 32px; }
+    .mobile-nav ul li a { font-size: 22px; font-weight: 600; }
+    .mobile-quote-btn {
+      width: 100%;
+      background: #ff8800;
+      padding: 14px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      color: white;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+    .overlay.active { opacity: 1; visibility: visible; }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* Hero */
+    .services-hero {
+      padding: 180px 0 100px;
+      background: linear-gradient(115deg, #0714267a, #07142671), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&auto=format');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+    .services-hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+    .services-hero h1 span { color: #ff8800; }
+    .services-hero p {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto;
+      color: #e0e6f0;
+    }
+
+    /* Section header */
+    .section-header {
+      text-align: center;
+      margin: 70px 0 40px;
+    }
+    .section-header span {
+      color: #ff8800;
+      letter-spacing: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .section-header h2 {
+      font-size: 44px;
+      margin-top: 8px;
+    }
+
+    /* 3 main sections styling */
+    .services-block {
+      background: rgba(255,255,255,0.03);
+      border-radius: 48px;
+      padding: 50px 40px;
+      margin: 60px 0;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,136,0,0.2);
+    }
+    .services-block h3 {
+      font-size: 36px;
+      color: #ff8800;
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .services-block h3 i {
+      font-size: 42px;
+    }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .service-item {
+      background: rgba(0,0,0,0.3);
+      border-radius: 28px;
+      padding: 30px 25px;
+      transition: 0.3s;
+    }
+    .service-item:hover {
+      transform: translateY(-5px);
+      background: rgba(255,136,0,0.1);
+    }
+    .service-item i {
+      font-size: 40px;
+      color: #ff8800;
+      margin-bottom: 20px;
+      display: inline-block;
+    }
+    .service-item h4 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+    .service-item p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    /* CTA section (simple) */
+    .quote-cta {
+      background: radial-gradient(circle at 20% 30%, rgba(255,136,0,0.15), transparent);
+      padding: 80px 0;
+      text-align: center;
+    }
+    .quote-cta h2 { font-size: 42px; margin-bottom: 20px; }
+    .btn-large {
+      background: #ff8800;
+      padding: 16px 42px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 18px;
+      display: inline-block;
+      margin-top: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      color: white;
+    }
+    .btn-large:hover { transform: scale(1.05); background: #ffaa33; }
+
+    /* Footer */
+    .footer {
+      background: #04101f;
+      border-top: 1px solid rgba(255,136,0,0.2);
+      padding: 70px 0 25px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 45px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { font-size: 22px; margin-bottom: 25px; position: relative; display: inline-block; }
+    .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: -9px; width: 45px; height: 3px; background: #ff8800; border-radius: 4px; }
+    .footer-links a { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; transition: 0.3s; }
+    .footer-links a:hover { color: #ff8800; transform: translateX(5px); }
+    .newsletter-form { display: flex; background: rgba(255,255,255,0.05); border-radius: 60px; overflow: hidden; border: 1px solid rgba(255,136,0,0.3); }
+    .newsletter-form input { flex: 1; background: transparent; border: none; padding: 14px 20px; color: white; }
+    .newsletter-form button { background: #ff8800; border: none; padding: 0 24px; cursor: pointer; color: white; }
+    .social-icons { display: flex; gap: 18px; margin-top: 20px; }
+    .social-icons a { background: rgba(255,136,0,0.15); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+    .social-icons a:hover { background: #ff8800; transform: translateY(-5px); }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); color: #8e9cb0; }
+
+    /* Floating WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      left: 25px;
+      background: #ff8800;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: white;
+      z-index: 999;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    }
+    .whatsapp-float:hover { transform: scale(1.1); background: #e67300; }
+
+    @media (max-width: 992px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      /* إخفاء زر سطح المكتب عند ظهور زر الموبايل */
+      .contact-btn-nav:not(.mobile-quote-btn) {
+        display: none;
+      }
+      .services-hero h1 { font-size: 48px; }
+      .section-header h2 { font-size: 34px; }
+      .services-block { padding: 30px 20px; }
+      .services-block h3 { font-size: 28px; }
+    }
+    @media (max-width: 576px) {
+      .services-hero h1 { font-size: 36px; }
+      .service-item { padding: 20px; }
+      .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 15px; left: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-content">
+    <!-- زر طلب عرض سعر (يظهر أولاً على اليمين) -->
+    <button class="contact-btn-nav" id="navContactBtn">Get a Quote</button>
+    
+    <!-- الروابط تظهر في المنتصف -->
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html" class="active">Services</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+
+    <!-- شعار HUBWAY (يظهر أخيراً على اليسار) -->
+    <div class="logo">
+      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY" class="logo-img" onerror="this.src='https://placehold.co/70x70?text=H'">
+      <div><h2>HUBWAY</h2><p>Fast Logistics Solutions</p></div>
+    </div>
+
+    <!-- زر القائمة للجوال يظهر بجانب زر الطلب -->
+    <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu (يحتوي على زر Get a Quote خاص) -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><button class="mobile-quote-btn" id="mobileContactBtn">Get a Quote</button></li>
+  </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- Hero Section -->
+<section class="services-hero">
+  <div class="container">
+    <h1>خدماتنا <span>اللوجستية</span></h1>
+    <p>نقدم حلول نقل وتخزين وتوزيع متكاملة بأعلى معايير الجودة والموثوقية، مع فريق دعم على مدار الساعة.</p>
+  </div>
+</section>
+
+<div class="container">
+  <!-- القسم الأول: النقل، التخزين، التوزيع -->
+  <div class="services-block reveal">
+    <h3><i class="fas fa-truck-moving"></i> النقل، التخزين والتوزيع</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <i class="fas fa-truck"></i>
+        <h4>النقل والخدمات اللوجستية</h4>
+        <p>نقل البضائع داخل المدن وبين المناطق، خدمات نقل لصالح الغير، وإدارة عمليات الشحن بكفاءة عالية.</p>
+      </div>
+      <div class="service-item">
+        <i class="fas fa-warehouse"></i>
+        <h4>التخزين (Warehousing)</h4>
+        <p>حلول تخزين آمنة ومتكاملة، إدارة المخزون، تجهيز وتغليف البضائع قبل الشحن.</p>
+      </div>
+      <div class="service-item">
+        <i class="fas fa-map-marked-alt"></i>
+        <h4>التوزيع والتوصيل</h4>
+        <p>توصيل سريع وموثوق، تغطية جغرافية واسعة داخل المملكة، والالتزام بمواعيد التسليم.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- القسم الثاني: دعم العملاء، التتبع، الحلول المتكاملة -->
+  <div class="services-block reveal">
+    <h3><i class="fas fa-headset"></i> الدعم والتقنية والحلول المتكاملة</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <i class="fas fa-headset"></i>
+        <h4>خدمة العملاء 24/7</h4>
+        <p>دعم فني وخدمة عملاء على مدار الساعة، متابعة الشحنات والطلبات، حل المشاكل بشكل فوري.</p>
+      </div>
+      <div class="service-item">
+        <i class="fas fa-chart-line"></i>
+        <h4>تتبع الشحنات (Tracking)</h4>
+        <p>متابعة الشحنة لحظة بلحظة، نظام تتبع حديث باستخدام التقنية، شفافية كاملة مع العملاء.</p>
+      </div>
+      <div class="service-item">
+        <i class="fas fa-cogs"></i>
+        <h4>الحلول اللوجستية المتكاملة</h4>
+        <p>إدارة كاملة لسلسلة الإمداد، حلول مخصصة للشركات، تحسين كفاءة التشغيل وتقليل التكاليف.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- القسم الثالث: النقل الآمن، الشراكات التجارية -->
+  <div class="services-block reveal">
+    <h3><i class="fas fa-handshake"></i> الأمان والشراكات</h3>
+    <div class="services-list">
+      <div class="service-item">
+        <i class="fas fa-shield-alt"></i>
+        <h4>النقل الآمن والموثوق</h4>
+        <p>الالتزام بمعايير السلامة والأمان، حماية البضائع أثناء النقل والتخزين، أسطول نقل مجهز وحديث.</p>
+      </div>
+      <div class="service-item">
+        <i class="fas fa-handshake"></i>
+        <h4>الشراكات والخدمات التجارية</h4>
+        <p>بناء شراكات طويلة الأمد مع العملاء، دعم الشركات والمتاجر في عمليات التوصيل، حلول لوجستية للمشاريع الكبيرة.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA to Quote -->
+<div class="quote-cta" id="quote">
+  <div class="container">
+    <h2>هل تحتاج إلى حل لوجستي متكامل؟</h2>
+    <p>تواصل معنا الآن للحصول على عرض سعر فوري ومخصص لاحتياجاتك.</p>
+    <button class="btn-large" id="ctaQuoteBtn">طلب عرض سعر →</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-col">
+        <h4>HUBWAY</h4>
+        <p>حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <div class="footer-links">
+          <a href="home.html">Home</a>
+          <a href="services.html" class="active">Services</a>
+          <a href="about.html">About Us</a>
+          <a href="#quote">Get a Quote</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>خدماتنا</h4>
+        <div class="footer-links">
+          <a href="#">النقل والتخزين</a>
+          <a href="#">التوزيع السريع</a>
+          <a href="#">الدعم 24/7</a>
+          <a href="#">تتبع الشحنات</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>النشرة البريدية</h4>
+        <p>اشترك لتحصل على آخر العروض والأخبار.</p>
+        <div class="newsletter-form">
+          <input type="email" placeholder="بريدك الإلكتروني">
+          <button><i class="fas fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2025 HUBWAY Logistics | جميع الحقوق محفوظة</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('overlay');
+  const closeMenu = document.getElementById('closeMenu');
+  function openMenu() { mobileNav.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenuFunc() { mobileNav.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  menuToggle.addEventListener('click', openMenu);
+  closeMenu.addEventListener('click', closeMenuFunc);
+  overlay.addEventListener('click', closeMenuFunc);
+
+  document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
+  document.getElementById('navContactBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
+  document.getElementById('ctaQuoteBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
+
+  // Newsletter subscription alert
+  const newsletterBtn = document.querySelector('.newsletter-form button');
+  if(newsletterBtn) {
+    newsletterBtn.addEventListener('click', () => {
+      const inp = document.querySelector('.newsletter-form input');
+      if(inp.value.trim() !== '') {
+        alert('📧 تم الاشتراك بنجاح!');
+        inp.value = '';
+      } else {
+        alert('الرجاء إدخال بريد إلكتروني صحيح.');
+      }
+    });
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting) {
+        e.target.classList.add('active');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>

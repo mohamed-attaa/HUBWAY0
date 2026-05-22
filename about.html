@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>HUBWAY | About Us — Logistics Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #071426;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    ul {
+      list-style: none;
+    }
+    .container {
+      width: 90%;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    /* scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a1a2f; }
+    ::-webkit-scrollbar-thumb { background: #ff8800; border-radius: 10px; }
+
+    /* navbar - starts completely transparent */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      padding: 18px 0;
+      transition: 0.4s ease;
+      background: transparent;
+      backdrop-filter: none;
+      border-bottom: none;
+    }
+    /* when scrolled, add background and blur */
+    .navbar.scrolled {
+      background: rgba(7, 20, 38, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255, 136, 0, 0.2);
+    }
+    .nav-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .logo-img {
+      width: 65px;
+      height: 65px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(255,136,0,0.4));
+      transition: 0.4s;
+    }
+    .logo-img:hover { transform: scale(1.08) rotate(-2deg);}
+    .logo h2 {
+      font-size: 28px;
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff, #ffbc6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p { color: #cbd5e6; font-size: 11px; font-weight: 500; }
+    .nav-links { display: flex; gap: 38px; }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 17px;
+      position: relative;
+      transition: 0.3s;
+      color: white; /* visible on transparent bg */
+    }
+    .nav-links a:hover, .nav-links a.active { color: #ff8800; }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: #ff8800;
+      transition: 0.3s;
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    
+    /* زر سطح المكتب - سيتم إخفاؤه على الموبايل */
+    .contact-btn-nav {
+      background: #ff8800;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      border: none;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(255,136,0,0.3);
+      font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    .contact-btn-nav:hover {
+      transform: translateY(-3px);
+      background: #ff9d24;
+    }
+    
+    .mobile-menu-btn {
+      display: none;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    
+    /* mobile nav */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 280px;
+      height: 100%;
+      background: rgba(7, 20, 38, 0.98);
+      backdrop-filter: blur(16px);
+      z-index: 1000;
+      transition: 0.4s;
+      padding: 100px 30px 40px;
+      border-left: 1px solid rgba(255,136,0,0.3);
+    }
+    .mobile-nav.active { right: 0; }
+    .mobile-nav .close-menu {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .mobile-nav ul { display: flex; flex-direction: column; gap: 32px; }
+    .mobile-nav ul li a { font-size: 22px; font-weight: 600; }
+    .mobile-nav ul li a:hover, .mobile-nav ul li a.active { color: #ff8800; }
+    
+    /* زر الموبايل داخل القائمة */
+    .mobile-quote-btn {
+      width: 100%;
+      text-align: center;
+      background: #ff8800;
+      padding: 14px 20px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 18px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 15px;
+      box-shadow: 0 4px 12px rgba(255,136,0,0.3);
+    }
+    .mobile-quote-btn:hover {
+      background: #ffaa33;
+      transform: scale(1.02);
+    }
+    
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s;
+    }
+    .overlay.active { opacity: 1; visibility: visible; }
+
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+
+    /* hero about */
+    .about-hero {
+      padding: 180px 0 100px;
+      background: linear-gradient(115deg, #07142680 30%, rgba(7, 20, 38, 0.39)), url('./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .about-hero .hero-content {
+      max-width: 700px;
+    }
+    .about-hero h1 {
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 25px;
+    }
+    .about-hero h1 span { color: #ff8800; }
+    .about-hero p {
+      font-size: 18px;
+      color: #dfe6f5;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 50px;
+      margin-top: 30px;
+    }
+    .hero-stats div h3 {
+      font-size: 38px;
+      color: #ff8800;
+    }
+    /* mission vision row */
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 80px 0;
+    }
+    .mv-card {
+      background: rgba(255,255,255,0.03);
+      border-radius: 48px;
+      padding: 50px 40px;
+      border: 1px solid rgba(255,136,0,0.2);
+      transition: 0.4s;
+    }
+    .mv-card:hover { transform: translateY(-10px); border-color: #ff8800; background: rgba(255,136,0,0.05);}
+    .mv-card i {
+      font-size: 54px;
+      color: #ff8800;
+      margin-bottom: 25px;
+    }
+    .mv-card h3 { font-size: 36px; margin-bottom: 20px; }
+    .mv-card p { color: #cbd5e1; line-height: 1.8; font-size: 17px; }
+
+    /* strategic goals */
+    .strategy-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin: 60px 0;
+    }
+    .strategy-card {
+      background: linear-gradient(145deg, #0f2a3f, #071e30);
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      flex: 1;
+      min-width: 220px;
+      transition: 0.3s;
+      border-bottom: 4px solid #ff8800;
+    }
+    .strategy-card i { font-size: 52px; color: #ff8800; margin-bottom: 25px; }
+    .strategy-card h4 { font-size: 28px; margin-bottom: 15px; }
+    .strategy-card p { color: #b9ceff; }
+    .center-logo-large {
+      text-align: center;
+      margin: 30px 0 20px;
+    }
+    .center-logo-large img { width: 140px; filter: drop-shadow(0 0 20px rgba(255,136,0,0.6)); }
+
+    /* operational excellence */
+    .excellence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 35px;
+      margin: 50px 0;
+    }
+    .excellence-item {
+      background: rgba(255,255,255,0.02);
+      border-radius: 28px;
+      padding: 40px 25px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,136,0,0.15);
+      transition: 0.3s;
+    }
+    .excellence-item i { font-size: 48px; color: #ff8800; margin-bottom: 25px; }
+    .excellence-item h3 { font-size: 26px; margin-bottom: 15px; }
+
+    /* growth map section */
+    .growth-section {
+      background: rgba(0,0,0,0.2);
+      border-radius: 56px;
+      padding: 60px 40px;
+      margin: 50px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+    .growth-left h3 { font-size: 36px; margin-bottom: 20px; color: #ff8800; }
+    .growth-list { margin-top: 30px; }
+    .growth-list li { display: flex; gap: 15px; margin-bottom: 25px; align-items: center; }
+    .growth-list li i { font-size: 28px; color: #ff8800; width: 45px; }
+    .growth-map {
+      background: linear-gradient(145deg, #0a233b, #071426);
+      border-radius: 36px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(255,136,0,0.3);
+    }
+    .city-dots { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
+    .city-dot { background: #ff8800; width: 12px; height: 12px; border-radius: 50%; position: relative; }
+    .city-dot span { position: absolute; bottom: -25px; left: -15px; font-size: 13px; background: rgba(0,0,0,0.7); padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
+
+    /* values modern grid */
+    .values-modern {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 25px;
+      margin: 60px 0;
+    }
+    .value-modern {
+      background: rgba(255,255,255,0.03);
+      border-radius: 24px;
+      padding: 30px 15px;
+      text-align: center;
+      transition: 0.3s;
+    }
+    .value-modern i { font-size: 42px; color: #ff8800; margin-bottom: 15px; }
+    .value-modern h4 { font-size: 18px; font-weight: 700; }
+
+    /* dual axis */
+    .dual-axis {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin: 70px 0;
+    }
+    .axis-card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 40px;
+      padding: 45px 35px;
+      border-left: 8px solid #ff8800;
+    }
+    .axis-card h3 { font-size: 32px; margin-bottom: 20px; display: flex; gap: 15px; align-items: center; }
+    .axis-card p { margin-top: 15px; color: #cbdef5; }
+
+    /* integrated systems + truck */
+    .integrated-section {
+      background: linear-gradient(135deg, #051a2c, #030f1c);
+      border-radius: 60px;
+      padding: 60px;
+      margin: 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .integrated-features { display: grid; gap: 25px; }
+    .feature-item { display: flex; gap: 20px; align-items: center; }
+    .feature-item i { font-size: 38px; color: #ff8800; width: 60px; }
+    .truck-img {
+      width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 25px 35px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,136,0,0.4);
+    }
+
+    /* quote section */
+    .quote-section {
+      padding: 80px 0;
+      background: radial-gradient(circle at 20% 30%, rgba(255,136,0,0.08), transparent);
+    }
+    .quote-wrapper {
+      background: rgba(10, 25, 47, 0.6);
+      backdrop-filter: blur(12px);
+      border-radius: 56px;
+      padding: 48px 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+    .contact-info-item { display: flex; gap: 18px; margin-bottom: 25px; align-items: center; }
+    .contact-info-item i { width: 48px; height: 48px; background: rgba(255,136,0,0.15); border-radius: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #ff8800; }
+    .quote-right form { display: flex; flex-direction: column; gap: 20px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 16px 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 28px;
+      color: white;
+      font-family: 'Cairo', sans-serif;
+    }
+    .quote-btn { background: #ff8800; border: none; padding: 16px; border-radius: 40px; font-weight: 800; cursor: pointer; color: white; }
+
+    /* footer */
+    .footer {
+      background: #04101f;
+      border-top: 1px solid rgba(255,136,0,0.2);
+      padding: 70px 0 25px;
+    }
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 45px;
+      margin-bottom: 50px;
+    }
+    .footer-col h4 { font-size: 22px; margin-bottom: 25px; position: relative; display: inline-block; }
+    .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: -9px; width: 45px; height: 3px; background: #ff8800; border-radius: 4px; }
+    .footer-links a { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; transition: 0.3s; }
+    .footer-links a:hover { color: #ff8800; transform: translateX(5px); }
+    .newsletter-form { display: flex; background: rgba(255,255,255,0.05); border-radius: 60px; overflow: hidden; border: 1px solid rgba(255,136,0,0.3); }
+    .newsletter-form input { flex: 1; background: transparent; border: none; padding: 14px 20px; color: white; }
+    .newsletter-form button { background: #ff8800; border: none; padding: 0 24px; cursor: pointer; color: white; }
+    .social-icons { display: flex; gap: 18px; margin-top: 20px; }
+    .social-icons a { background: rgba(255,136,0,0.15); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
+    .social-icons a:hover { background: #ff8800; transform: translateY(-5px); }
+    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); color: #8e9cb0; }
+
+    /* ========== RESPONSIVE FIX ========== */
+    @media (max-width: 992px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      /* إخفاء زر "Get a Quote" الخاص بسطح المكتب */
+      .contact-btn-nav:not(.mobile-quote-btn) {
+        display: none;
+      }
+      .mission-vision, .growth-section, .integrated-section, .quote-wrapper, .dual-axis { grid-template-columns: 1fr; }
+      .about-hero h1 { font-size: 48px; }
+      .hero-stats { flex-wrap: wrap; justify-content: center; }
+      .quote-wrapper { padding: 32px; }
+    }
+    @media (max-width: 576px) {
+      .about-hero h1 { font-size: 36px; }
+      .mv-card { padding: 30px 20px; }
+      .strategy-card h4 { font-size: 22px; }
+      .growth-section { padding: 30px 20px; }
+      .integrated-section { padding: 30px 20px; }
+    }
+
+
+
+
+
+
+      .whatsapp-float {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #ff8800; /* Golden orange */
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 999;
+    text-decoration: none;
+  }
+  .whatsapp-float:hover {
+    background-color: #e67300;
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.4);
+  }
+  @media (max-width: 600px) {
+    .whatsapp-float {
+      width: 50px;
+      height: 50px;
+      font-size: 28px;
+      bottom: 15px;
+      right: 15px;
+    }
+  }
+  </style>
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+  <div class="container nav-content">
+    <div class="logo">
+      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY" class="logo-img" onerror="this.src='https://placehold.co/70x70?text=H'">
+      <div><h2>HUBWAY</h2><p>Fast Logistics Solutions</p></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="Services.html">Services</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+    </ul>
+    <!-- زر سطح المكتب (سيختفي على الموبايل) -->
+    <button class="contact-btn-nav" id="navContactBtn">Get a Quote</button>
+    <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
+
+<!-- Mobile Menu (يحتوي على زر Get a Quote خاص) -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li>
+      <button class="mobile-quote-btn" id="mobileContactBtn">Get a Quote</button>
+    </li>
+  </ul>
+</div>
+<div class="overlay" id="overlay"></div>
+
+<!-- Hero Section -->
+<section class="about-hero">
+  <div class="container">
+    <div class="hero-content reveal">
+      <h1>Driving <span>Logistics</span> Excellence</h1>
+      <p>حلول لوجستية متكاملة بأعلى معايير الجودة والشفافية. نقدم خدمات النقل والتخزين عبر شبكة واسعة مع التزام تام بمواعيد التسليم وسلامة الشحنات.</p>
+      <div class="hero-stats">
+        <div><h3>350+</h3><p>Fleet Vehicles</p></div>
+        <div><h3>98%</h3><p>On-Time Delivery</p></div>
+        <div><h3>24/7</h3><p>Client Support</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Mission & Vision -->
+  <div class="mission-vision reveal">
+    <div class="mv-card"><i class="fas fa-bullseye"></i><h3>من نحن</h3><p>نحن نقدم خدمات النقل لصالح الغير والخدمات اللوجستية بكافة انواعها مع اعلى معايير الجودة والامانة مع فريق متميز من خبرات وكفاءات و فريق متميز من خدمة العملاء لخدمة عملاء على مدار الساعة.</p></div>
+    <div class="mv-card"><i class="fas fa-globe-asia"></i><h3>رؤيتنا</h3><p>أن نكون الخيار الأول في مجال الخدمات اللوجستية على مستوى المملكة، من خلال تقديم حلول نقل وتخزين مبتكرة وسريعة وموثوقة، تواكب تطورات السوق وتحقق أعلى مستويات رضا العملاء، مع الالتزام بالجودة والاستدامة.</p></div>
+  </div>
+
+  <!-- Strategic Goals -->
+  <div class="reveal"><div class="section-title" style="text-align:center; margin-bottom:20px;"><span style="color:#ff8800;">خارطة طريق نحو الريادة</span><h2 style="font-size: 42px;">أهدافنا الاستراتيجية</h2></div></div>
+  <div class="strategy-grid reveal">
+    <div class="strategy-card"><i class="fas fa-chart-line"></i><h4>التوسع والنمو</h4><p>توسيع نطاق الخدمات لتغطية أسواق جديدة</p></div>
+    <div class="strategy-card"><i class="fas fa-handshake"></i><h4>الشراكات والعملاء</h4><p>بناء علاقات استراتيجية دائمة</p></div>
+    <div class="strategy-card"><i class="fas fa-microchip"></i><h4>التميز التشغيلي</h4><p>تحسين الكفاءة والجودة التشغيلية</p></div>
+  </div>
+  <div class="center-logo-large reveal"><img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY core"></div>
+
+  <!-- Operational Excellence -->
+  <div class="reveal"><div class="section-title" style="text-align:center; margin:40px 0 20px;"><span style="color:#ff8800;">كفاءة وتقنية</span><h2 style="font-size: 42px;">التميز التشغيلي والتقني</h2></div></div>
+  <div class="excellence-grid reveal">
+    <div class="excellence-item"><i class="fas fa-shield-alt"></i><h3>السلامة والأمان</h3><p>الالتزام بمعايير السلامة في جميع مراحل النقل والتخزين.</p></div>
+    <div class="excellence-item"><i class="fas fa-radar"></i><h3>التقنية المتقدمة</h3><p>استخدام أحدث التقنيات لتتبع الشحنات وتحسين العمليات.</p></div>
+    <div class="excellence-item"><i class="fas fa-cogs"></i><h3>الكفاءة والسرعة</h3><p>تقديم خدمات سريعة وموثوقة مع تقليل التكاليف وجودة عالية.</p></div>
+  </div>
+
+  <!-- Growth and Partnerships + Map -->
+  <div class="growth-section reveal">
+    <div class="growth-left">
+      <h3>النمو، العملاء، والشراكات</h3>
+      <ul class="growth-list">
+        <li><i class="fas fa-map-marked-alt"></i><span><strong>التوسع الجغرافي</strong><br>تغطية أكبر عدد من المدن والمناطق</span></li>
+        <li><i class="fas fa-smile"></i><span><strong>رضا العملاء</strong><br>جودة الخدمة والالتزام بالمواعيد</span></li>
+        <li><i class="fas fa-handshake"></i><span><strong>شراكات مستدامة</strong><br>علاقات طويلة الأمد مع العملاء والشركاء</span></li>
+      </ul>
+    </div>
+    <div class="growth-map">
+      <i class="fas fa-map" style="font-size: 60px; color:#ff8800;"></i>
+      <h4 style="margin: 15px 0;">حضورنا في المملكة</h4>
+      <div class="city-dots">
+        <div class="city-dot"><span>الرياض</span></div>
+        <div class="city-dot"><span>جدة</span></div>
+        <div class="city-dot"><span>الدمام</span></div>
+        <div class="city-dot"><span>مكة</span></div>
+      </div>
+      <p style="margin-top: 35px;">شبكة لوجستية تغطي كافة أنحاء المملكة</p>
+    </div>
+  </div>
+
+  <!-- Values (7 items) -->
+  <div class="reveal"><div class="section-title" style="text-align:center;"><span style="color:#ff8800;">مبادئنا</span><h2 style="font-size: 42px;">قيمنا المؤسسية</h2></div></div>
+  <div class="values-modern reveal">
+    <div class="value-modern"><i class="fas fa-handshake"></i><h4>رضا العملاء</h4></div>
+    <div class="value-modern"><i class="fas fa-shield-alt"></i><h4>الموثوقية</h4></div>
+    <div class="value-modern"><i class="fas fa-briefcase"></i><h4>الاحترافية</h4></div>
+    <div class="value-modern"><i class="fas fa-lightbulb"></i><h4>الابتكار</h4></div>
+    <div class="value-modern"><i class="fas fa-file-alt"></i><h4>الشفافية</h4></div>
+    <div class="value-modern"><i class="fas fa-hard-hat"></i><h4>السلامة</h4></div>
+    <div class="value-modern"><i class="fas fa-users"></i><h4>العمل بروح الفريق</h4></div>
+  </div>
+
+  <!-- Dual axis -->
+  <div class="dual-axis reveal">
+    <div class="axis-card"><h3><i class="fas fa-microchip"></i> محور التشغيل</h3><p><strong>الابتكار:</strong> نستخدم أحدث التقنيات لتطوير خدماتنا وتحسين تجربة العملاء.<br><strong>الاحترافية:</strong> نعمل وفق أعلى المعايير المهنية في جميع خدماتنا.</p></div>
+    <div class="axis-card"><h3><i class="fas fa-users"></i> محور العملاء</h3><p><strong>رضا العملاء:</strong> نضع احتياجات عملائنا في مقدمة أولوياتنا ونسعى لتجاوز توقعاتهم.<br><strong>الشفافية:</strong> نؤمن بالوضوح في التعامل وتقديم معلومات دقيقة لعملائنا.</p></div>
+  </div>
+
+  <!-- Field execution -->
+  <div class="excellence-grid reveal" style="margin: 20px 0;">
+    <div class="excellence-item"><i class="fas fa-hard-hat"></i><h3>السلامة</h3><p>نلتزم بأعلى معايير السلامة في جميع العمليات.</p></div>
+    <div class="excellence-item"><i class="fas fa-clock"></i><h3>الموثوقية</h3><p>تسليم الشحنات في الوقت المحدد بأعلى درجات الأمان.</p></div>
+    <div class="excellence-item"><i class="fas fa-users"></i><h3>العمل بروح الفريق</h3><p>النجاح يتحقق بالتعاون والعمل الجماعي.</p></div>
+  </div>
+
+  <!-- Integrated services + truck -->
+  <div class="integrated-section reveal">
+    <div class="integrated-features">
+      <div class="feature-item"><i class="fas fa-cogs"></i><div><h4>حلول لوجستية بكافة أنواعها</h4><p>خدمات شاملة ومتكاملة</p></div></div>
+      <div class="feature-item"><i class="fas fa-truck"></i><div><h4>النقل لصالح الغير</h4><p>أسطول حديث ومجهز</p></div></div>
+      <div class="feature-item"><i class="fas fa-headset"></i><div><h4>خدمة عملاء على مدار الساعة</h4><p>دعم فوري 24/7</p></div></div>
+      <div class="feature-item"><i class="fas fa-chalkboard-user"></i><div><h4>فريق من الخبرات والكفاءات</h4><p>احترافية وكفاءة عالية</p></div></div>
+    </div>
+    <div>
+      <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&auto=format" alt="HUBWAY Truck" class="truck-img">
+      <div class="center-logo-large" style="margin-top: 20px;"><img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" style="width: 100px;"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-container">
+      <div class="footer-col"><h4>HUBWAY</h4><p>حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div></div>
+      <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a><a href="#quote"><i class="fas fa-chevron-right"></i> Get Quote</a></div></div>
+      <div class="footer-col"><h4>Our Services</h4><div class="footer-links"><a href="#"><i class="fas fa-truck"></i> Ground Freight</a><a href="#"><i class="fas fa-ship"></i> Ocean Freight</a><a href="#"><i class="fas fa-boxes"></i> 3PL Warehousing</a></div></div>
+      <div class="footer-col"><h4>Newsletter</h4><p>اشترك لتحصل على آخر العروض</p><div class="newsletter-form"><input type="email" placeholder="Your email"><button><i class="fas fa-paper-plane"></i></button></div></div>
+    </div>
+    <div class="copyright"><p>© 2025 HUBWAY Logistics | جميع الحقوق محفوظة</p></div>
+  </div>
+</footer>
+<a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<script>
+  const navbar = document.getElementById('navbar');
+  // إضافة حدث التمرير لتغيير النافبار
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile menu logic
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileNav = document.getElementById('mobileNav');
+  const overlay = document.getElementById('overlay');
+  const closeMenu = document.getElementById('closeMenu');
+  function openMenu() { mobileNav.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeMenuFunc() { mobileNav.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  menuToggle.addEventListener('click', openMenu);
+  closeMenu.addEventListener('click', closeMenuFunc);
+  overlay.addEventListener('click', closeMenuFunc);
+  // Mobile quote button
+  document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
+  // Desktop quote button
+  document.getElementById('navContactBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
+  // Quote form
+  const quoteForm = document.getElementById('quickQuoteForm');
+  if(quoteForm) quoteForm.addEventListener('submit', (e) => { e.preventDefault(); alert('✅ Thank you! HUBWAY team will reach you within 24h.'); quoteForm.reset(); });
+  // Newsletter
+  const newsletterBtn = document.querySelector('.newsletter-form button');
+  if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert('📧 Subscribed!'); inp.value=''; } else alert('Enter email'); });
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); } }); }, { threshold: 0.15 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+</body>
+</html>
