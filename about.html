@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>HUBWAY | About Us — Logistics Excellence</title>
+  <title>HUBWAY | من نحن - ريادة لوجستية</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -15,8 +15,10 @@
     }
     body {
       font-family: 'Cairo', sans-serif;
-      background: #071426;
-      color: #ffffff;
+      background-color: #ffffff;
+      background-image: linear-gradient(-180deg, rgba(29, 189, 205, 0), rgba(29, 189, 205, 0.1));
+      background-attachment: fixed;
+      color: #1a1a1a;
       overflow-x: hidden;
     }
     a {
@@ -31,12 +33,11 @@
       max-width: 1300px;
       margin: 0 auto;
     }
-    /* scrollbar */
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0a1a2f; }
-    ::-webkit-scrollbar-thumb { background: #ff8800; border-radius: 10px; }
+    ::-webkit-scrollbar-track { background: #f0f0f0; }
+    ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 10px; }
 
-    /* navbar - starts completely transparent */
+    /* navbar */
     .navbar {
       position: fixed;
       top: 0;
@@ -45,15 +46,14 @@
       z-index: 999;
       padding: 18px 0;
       transition: 0.4s ease;
-      background: transparent;
-      backdrop-filter: none;
-      border-bottom: none;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
     }
-    /* when scrolled, add background and blur */
     .navbar.scrolled {
-      background: rgba(7, 20, 38, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 136, 0, 0.2);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
     .nav-content {
       display: flex;
@@ -64,34 +64,36 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
     .logo-img {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(255,136,0,0.4));
-      transition: 0.4s;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+      transition: 0.3s;
     }
-    .logo-img:hover { transform: scale(1.08) rotate(-2deg);}
+    .logo-img:hover { transform: scale(1.05);}
     .logo h2 {
-      font-size: 28px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #fff, #ffbc6e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      font-size: 26px;
+      font-weight: 800;
+      color: #dc2626;
+      letter-spacing: -0.5px;
     }
-    .logo p { color: #cbd5e6; font-size: 11px; font-weight: 500; }
-    .nav-links { display: flex; gap: 38px; }
+    .logo p {
+      color: #555;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .nav-links { display: flex; gap: 35px; }
     .nav-links a {
       font-weight: 600;
-      font-size: 17px;
+      font-size: 16px;
       position: relative;
+      color: #222;
       transition: 0.3s;
-      color: white; /* visible on transparent bg */
     }
-    .nav-links a:hover, .nav-links a.active { color: #ff8800; }
+    .nav-links a:hover, .nav-links a.active { color: #dc2626; }
     .nav-links a::after {
       content: '';
       position: absolute;
@@ -99,52 +101,67 @@
       bottom: -8px;
       width: 0;
       height: 2px;
-      background: #ff8800;
+      background: #dc2626;
       transition: 0.3s;
     }
     .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
     
-    /* زر سطح المكتب - سيتم إخفاؤه على الموبايل */
+    .lang-switch {
+      background: transparent;
+      border: 1px solid #dc2626;
+      color: #dc2626;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Cairo', sans-serif;
+      margin-left: 15px;
+    }
+    .lang-switch:hover {
+      background: #dc2626;
+      color: white;
+    }
     .contact-btn-nav {
-      background: #ff8800;
-      padding: 12px 28px;
-      border-radius: 50px;
+      background: #dc2626;
+      padding: 10px 24px;
+      border-radius: 40px;
       font-weight: 700;
       border: none;
       color: white;
       cursor: pointer;
-      box-shadow: 0 6px 14px rgba(255,136,0,0.3);
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
       font-family: 'Cairo', sans-serif;
-      font-size: 15px;
+      font-size: 14px;
       transition: 0.3s;
     }
     .contact-btn-nav:hover {
-      transform: translateY(-3px);
-      background: #ff9d24;
+      transform: translateY(-2px);
+      background: #b91c1c;
+      box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
     }
-    
     .mobile-menu-btn {
       display: none;
-      font-size: 28px;
+      font-size: 26px;
       background: none;
       border: none;
-      color: white;
+      color: #222;
       cursor: pointer;
     }
-    
-    /* mobile nav */
     .mobile-nav {
       position: fixed;
       top: 0;
       right: -100%;
       width: 280px;
       height: 100%;
-      background: rgba(7, 20, 38, 0.98);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(16px);
       z-index: 1000;
       transition: 0.4s;
       padding: 100px 30px 40px;
-      border-left: 1px solid rgba(255,136,0,0.3);
+      border-left: 1px solid rgba(0,0,0,0.1);
+      box-shadow: -5px 0 20px rgba(0,0,0,0.05);
     }
     .mobile-nav.active { right: 0; }
     .mobile-nav .close-menu {
@@ -154,41 +171,30 @@
       font-size: 28px;
       background: none;
       border: none;
-      color: white;
+      color: #222;
       cursor: pointer;
     }
-    .mobile-nav ul { display: flex; flex-direction: column; gap: 32px; }
-    .mobile-nav ul li a { font-size: 22px; font-weight: 600; }
-    .mobile-nav ul li a:hover, .mobile-nav ul li a.active { color: #ff8800; }
-    
-    /* زر الموبايل داخل القائمة */
+    .mobile-nav ul { display: flex; flex-direction: column; gap: 30px; }
+    .mobile-nav ul li a { font-size: 20px; font-weight: 600; color: #222; }
+    .mobile-nav ul li a:hover { color: #dc2626; }
     .mobile-quote-btn {
       width: 100%;
-      text-align: center;
-      background: #ff8800;
-      padding: 14px 20px;
-      border-radius: 50px;
+      background: #dc2626;
+      padding: 12px;
+      border-radius: 40px;
       font-weight: 700;
-      font-size: 18px;
       border: none;
       color: white;
+      margin-top: 20px;
       cursor: pointer;
-      transition: 0.3s;
-      margin-top: 15px;
-      box-shadow: 0 4px 12px rgba(255,136,0,0.3);
     }
-    .mobile-quote-btn:hover {
-      background: #ffaa33;
-      transform: scale(1.02);
-    }
-    
     .overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       z-index: 998;
       opacity: 0;
       visibility: hidden;
@@ -204,13 +210,12 @@
     }
     .reveal.active { opacity: 1; transform: translateY(0); }
 
-    /* hero about */
+    /* about hero */
     .about-hero {
       padding: 180px 0 100px;
-      background: linear-gradient(115deg, #07142680 30%, rgba(7, 20, 38, 0.39)), url('./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png');
+      background: linear-gradient(115deg, rgba(255, 255, 255, 0.548), rgba(255, 255, 255, 0.596)), url('./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png');
       background-size: cover;
       background-position: center;
-      position: relative;
     }
     .about-hero .hero-content {
       max-width: 700px;
@@ -220,11 +225,12 @@
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 25px;
+      color: #111;
     }
-    .about-hero h1 span { color: #ff8800; }
+    .about-hero h1 span { color: #dc2626; }
     .about-hero p {
       font-size: 18px;
-      color: #dfe6f5;
+      color: #c20000;
       line-height: 1.7;
       margin-bottom: 35px;
     }
@@ -235,8 +241,10 @@
     }
     .hero-stats div h3 {
       font-size: 38px;
-      color: #ff8800;
+      color: #dc2626;
     }
+    .hero-stats div p { color: #bd0808; }
+
     /* mission vision row */
     .mission-vision {
       display: grid;
@@ -245,22 +253,37 @@
       margin: 80px 0;
     }
     .mv-card {
-      background: rgba(255,255,255,0.03);
+      background: #f9f9f9;
       border-radius: 48px;
       padding: 50px 40px;
-      border: 1px solid rgba(255,136,0,0.2);
+      border: 1px solid #eee;
       transition: 0.4s;
     }
-    .mv-card:hover { transform: translateY(-10px); border-color: #ff8800; background: rgba(255,136,0,0.05);}
+    .mv-card:hover { transform: translateY(-10px); border-color: #dc2626; background: rgba(220, 38, 38, 0.02);}
     .mv-card i {
       font-size: 54px;
-      color: #ff8800;
+      color: #dc2626;
       margin-bottom: 25px;
     }
-    .mv-card h3 { font-size: 36px; margin-bottom: 20px; }
-    .mv-card p { color: #cbd5e1; line-height: 1.8; font-size: 17px; }
+    .mv-card h3 { font-size: 36px; margin-bottom: 20px; color: #111; }
+    .mv-card p { color: #555; line-height: 1.8; font-size: 17px; }
 
     /* strategic goals */
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .section-title span {
+      color: #dc2626;
+      letter-spacing: 4px;
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+    .section-title h2 {
+      font-size: 42px;
+      margin-top: 8px;
+      color: #111;
+    }
     .strategy-grid {
       display: flex;
       flex-wrap: wrap;
@@ -269,23 +292,24 @@
       margin: 60px 0;
     }
     .strategy-card {
-      background: linear-gradient(145deg, #0f2a3f, #071e30);
+      background: linear-gradient(145deg, #f0f0f0, #fafafa);
       border-radius: 32px;
       padding: 40px 30px;
       text-align: center;
       flex: 1;
       min-width: 220px;
       transition: 0.3s;
-      border-bottom: 4px solid #ff8800;
+      border-bottom: 4px solid #dc2626;
+      border: 1px solid #eee;
     }
-    .strategy-card i { font-size: 52px; color: #ff8800; margin-bottom: 25px; }
-    .strategy-card h4 { font-size: 28px; margin-bottom: 15px; }
-    .strategy-card p { color: #b9ceff; }
+    .strategy-card i { font-size: 52px; color: #dc2626; margin-bottom: 25px; }
+    .strategy-card h4 { font-size: 28px; margin-bottom: 15px; color: #111; }
+    .strategy-card p { color: #555; }
     .center-logo-large {
       text-align: center;
       margin: 30px 0 20px;
     }
-    .center-logo-large img { width: 140px; filter: drop-shadow(0 0 20px rgba(255,136,0,0.6)); }
+    .center-logo-large img { width: 140px; filter: drop-shadow(0 0 10px rgba(0,0,0,0.1)); }
 
     /* operational excellence */
     .excellence-grid {
@@ -295,20 +319,20 @@
       margin: 50px 0;
     }
     .excellence-item {
-      background: rgba(255,255,255,0.02);
+      background: #f9f9f9;
       border-radius: 28px;
       padding: 40px 25px;
       text-align: center;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,136,0,0.15);
+      border: 1px solid #eee;
       transition: 0.3s;
     }
-    .excellence-item i { font-size: 48px; color: #ff8800; margin-bottom: 25px; }
-    .excellence-item h3 { font-size: 26px; margin-bottom: 15px; }
+    .excellence-item i { font-size: 48px; color: #dc2626; margin-bottom: 25px; }
+    .excellence-item h3 { font-size: 26px; margin-bottom: 15px; color: #111; }
+    .excellence-item p { color: #555; }
 
     /* growth map section */
     .growth-section {
-      background: rgba(0,0,0,0.2);
+      background: #f8f8f8;
       border-radius: 56px;
       padding: 60px 40px;
       margin: 50px 0;
@@ -317,20 +341,20 @@
       gap: 50px;
       align-items: center;
     }
-    .growth-left h3 { font-size: 36px; margin-bottom: 20px; color: #ff8800; }
+    .growth-left h3 { font-size: 36px; margin-bottom: 20px; color: #dc2626; }
     .growth-list { margin-top: 30px; }
     .growth-list li { display: flex; gap: 15px; margin-bottom: 25px; align-items: center; }
-    .growth-list li i { font-size: 28px; color: #ff8800; width: 45px; }
+    .growth-list li i { font-size: 28px; color: #dc2626; width: 45px; }
     .growth-map {
-      background: linear-gradient(145deg, #0a233b, #071426);
+      background: white;
       border-radius: 36px;
       padding: 30px;
       text-align: center;
-      border: 1px solid rgba(255,136,0,0.3);
+      border: 1px solid #e0e0e0;
     }
     .city-dots { display: flex; justify-content: center; gap: 30px; margin: 30px 0; flex-wrap: wrap; }
-    .city-dot { background: #ff8800; width: 12px; height: 12px; border-radius: 50%; position: relative; }
-    .city-dot span { position: absolute; bottom: -25px; left: -15px; font-size: 13px; background: rgba(0,0,0,0.7); padding: 2px 10px; border-radius: 20px; white-space: nowrap; }
+    .city-dot { background: #dc2626; width: 12px; height: 12px; border-radius: 50%; position: relative; }
+    .city-dot span { position: absolute; bottom: -25px; left: -15px; font-size: 13px; background: rgba(0,0,0,0.7); padding: 2px 10px; border-radius: 20px; white-space: nowrap; color: white; }
 
     /* values modern grid */
     .values-modern {
@@ -340,14 +364,15 @@
       margin: 60px 0;
     }
     .value-modern {
-      background: rgba(255,255,255,0.03);
+      background: #f9f9f9;
       border-radius: 24px;
       padding: 30px 15px;
       text-align: center;
       transition: 0.3s;
+      border: 1px solid #eee;
     }
-    .value-modern i { font-size: 42px; color: #ff8800; margin-bottom: 15px; }
-    .value-modern h4 { font-size: 18px; font-weight: 700; }
+    .value-modern i { font-size: 42px; color: #dc2626; margin-bottom: 15px; }
+    .value-modern h4 { font-size: 18px; font-weight: 700; color: #111; }
 
     /* dual axis */
     .dual-axis {
@@ -357,17 +382,18 @@
       margin: 70px 0;
     }
     .axis-card {
-      background: rgba(0,0,0,0.3);
+      background: #f9f9f9;
       border-radius: 40px;
       padding: 45px 35px;
-      border-left: 8px solid #ff8800;
+      border-right: 8px solid #dc2626;
+      border: 1px solid #eee;
     }
-    .axis-card h3 { font-size: 32px; margin-bottom: 20px; display: flex; gap: 15px; align-items: center; }
-    .axis-card p { margin-top: 15px; color: #cbdef5; }
+    .axis-card h3 { font-size: 32px; margin-bottom: 20px; display: flex; gap: 15px; align-items: center; color: #111; }
+    .axis-card p { margin-top: 15px; color: #555; }
 
     /* integrated systems + truck */
     .integrated-section {
-      background: linear-gradient(135deg, #051a2c, #030f1c);
+      background: linear-gradient(135deg, #fefefe, #f5f5f5);
       border-radius: 60px;
       padding: 60px;
       margin: 60px 0;
@@ -375,77 +401,105 @@
       grid-template-columns: 1fr 1fr;
       gap: 40px;
       align-items: center;
+      border: 1px solid #eee;
     }
     .integrated-features { display: grid; gap: 25px; }
     .feature-item { display: flex; gap: 20px; align-items: center; }
-    .feature-item i { font-size: 38px; color: #ff8800; width: 60px; }
+    .feature-item i { font-size: 38px; color: #dc2626; width: 60px; }
     .truck-img {
       width: 100%;
       border-radius: 32px;
-      box-shadow: 0 25px 35px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255,136,0,0.4);
+      box-shadow: 0 15px 25px rgba(0,0,0,0.05);
+      border: 1px solid #ddd;
     }
 
     /* quote section */
     .quote-section {
       padding: 80px 0;
-      background: radial-gradient(circle at 20% 30%, rgba(255,136,0,0.08), transparent);
+      background: transparent;
     }
     .quote-wrapper {
-      background: rgba(10, 25, 47, 0.6);
-      backdrop-filter: blur(12px);
-      border-radius: 56px;
-      padding: 48px 56px;
+      background: white;
+      border-radius: 48px;
+      border: 1px solid #e0e0e0;
+      padding: 45px 55px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 45px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
     }
     .contact-info-item { display: flex; gap: 18px; margin-bottom: 25px; align-items: center; }
-    .contact-info-item i { width: 48px; height: 48px; background: rgba(255,136,0,0.15); border-radius: 60px; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #ff8800; }
+    .contact-info-item i { width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #dc2626; }
     .quote-right form { display: flex; flex-direction: column; gap: 20px; }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
-      padding: 16px 20px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 28px;
-      color: white;
+      padding: 14px 18px;
+      background: #f5f5f5;
+      border: 1px solid #ddd;
+      border-radius: 30px;
       font-family: 'Cairo', sans-serif;
+      font-size: 15px;
+      color: #111;
     }
-    .quote-btn { background: #ff8800; border: none; padding: 16px; border-radius: 40px; font-weight: 800; cursor: pointer; color: white; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #dc2626;
+      background: white;
+    }
+    .quote-btn { background: #dc2626; border: none; padding: 14px; border-radius: 40px; font-weight: 700; font-size: 16px; cursor: pointer; color: white; transition: 0.3s; }
+    .quote-btn:hover { background: #b91c1c; transform: scale(1.02); }
 
     /* footer */
     .footer {
-      background: #04101f;
-      border-top: 1px solid rgba(255,136,0,0.2);
-      padding: 70px 0 25px;
+      background: #f8f8f8;
+      border-top: 1px solid #eee;
+      padding: 60px 0 25px;
     }
     .footer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 45px;
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
-    .footer-col h4 { font-size: 22px; margin-bottom: 25px; position: relative; display: inline-block; }
-    .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: -9px; width: 45px; height: 3px; background: #ff8800; border-radius: 4px; }
-    .footer-links a { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; transition: 0.3s; }
-    .footer-links a:hover { color: #ff8800; transform: translateX(5px); }
-    .newsletter-form { display: flex; background: rgba(255,255,255,0.05); border-radius: 60px; overflow: hidden; border: 1px solid rgba(255,136,0,0.3); }
-    .newsletter-form input { flex: 1; background: transparent; border: none; padding: 14px 20px; color: white; }
-    .newsletter-form button { background: #ff8800; border: none; padding: 0 24px; cursor: pointer; color: white; }
-    .social-icons { display: flex; gap: 18px; margin-top: 20px; }
-    .social-icons a { background: rgba(255,136,0,0.15); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-    .social-icons a:hover { background: #ff8800; transform: translateY(-5px); }
-    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); color: #8e9cb0; }
+    .footer-col h4 { font-size: 20px; margin-bottom: 22px; position: relative; display: inline-block; color: #111; }
+    .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; background: #dc2626; border-radius: 4px; }
+    .footer-col p { color: #666; line-height: 1.7; margin: 15px 0; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { color: #555; transition: 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .footer-links a i { font-size: 12px; color: #dc2626; }
+    .footer-links a:hover { color: #dc2626; transform: translateX(5px); }
+    .newsletter-form { display: flex; background: white; border-radius: 50px; overflow: hidden; border: 1px solid #ddd; margin-top: 15px; }
+    .newsletter-form input { flex: 1; background: transparent; border: none; padding: 12px 18px; color: #222; outline: none; }
+    .newsletter-form button { background: #dc2626; border: none; padding: 0 22px; cursor: pointer; color: white; transition: 0.3s; }
+    .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+    .social-icons a { background: rgba(220, 38, 38, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; font-size: 18px; color: #dc2626; }
+    .social-icons a:hover { background: #dc2626; color: white; transform: translateY(-3px); }
+    .copyright { text-align: center; padding-top: 25px; border-top: 1px solid #eee; color: #777; font-size: 13px; }
 
-    /* ========== RESPONSIVE FIX ========== */
+    /* whatsapp float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #dc2626;
+      color: white;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { background-color: #b91c1c; transform: scale(1.1); }
+
     @media (max-width: 992px) {
       .nav-links { display: none; }
       .mobile-menu-btn { display: block; }
-      /* إخفاء زر "Get a Quote" الخاص بسطح المكتب */
-      .contact-btn-nav:not(.mobile-quote-btn) {
-        display: none;
-      }
       .mission-vision, .growth-section, .integrated-section, .quote-wrapper, .dual-axis { grid-template-columns: 1fr; }
       .about-hero h1 { font-size: 48px; }
       .hero-stats { flex-wrap: wrap; justify-content: center; }
@@ -457,45 +511,10 @@
       .strategy-card h4 { font-size: 22px; }
       .growth-section { padding: 30px 20px; }
       .integrated-section { padding: 30px 20px; }
+      .logo h2 { font-size: 20px; }
+      .logo-img { width: 45px; height: 45px; }
+      .contact-btn-nav { padding: 6px 16px; font-size: 12px; }
     }
-
-
-
-
-
-
-      .whatsapp-float {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background-color: #ff8800; /* Golden orange */
-    color: white;
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 32px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-    z-index: 999;
-    text-decoration: none;
-  }
-  .whatsapp-float:hover {
-    background-color: #e67300;
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 136, 0, 0.4);
-  }
-  @media (max-width: 600px) {
-    .whatsapp-float {
-      width: 50px;
-      height: 50px;
-      font-size: 28px;
-      bottom: 15px;
-      right: 15px;
-    }
-  }
   </style>
 </head>
 <body>
@@ -503,30 +522,33 @@
 <nav class="navbar" id="navbar">
   <div class="container nav-content">
     <div class="logo">
-      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY" class="logo-img" onerror="this.src='https://placehold.co/70x70?text=H'">
-      <div><h2>HUBWAY</h2><p>Fast Logistics Solutions</p></div>
+      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY" class="logo-img" onerror="this.src='https://placehold.co/60x60?text=H'">
+      <div>
+        <h2>HUBWAY</h2>
+        <p id="logoSubtitle">حلول لوجستية سريعة</p>
+      </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="Services.html">Services</a></li>
-      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="index.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
+      <li><a href="services.html" data-en="Services" data-ar="الخدمات">الخدمات</a></li>
+      <li><a href="about.html" class="active" data-en="About" data-ar="عن الشركة">عن الشركة</a></li>
     </ul>
-    <!-- زر سطح المكتب (سيختفي على الموبايل) -->
-    <button class="contact-btn-nav" id="navContactBtn">Get a Quote</button>
-    <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="lang-switch" id="langToggle">English</button>
+      <button class="contact-btn-nav" id="navContactBtn" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</button>
+      <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    </div>
   </div>
 </nav>
 
-<!-- Mobile Menu (يحتوي على زر Get a Quote خاص) -->
+<!-- Mobile Menu -->
 <div class="mobile-nav" id="mobileNav">
   <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="about.html" class="active">About</a></li>
-    <li>
-      <button class="mobile-quote-btn" id="mobileContactBtn">Get a Quote</button>
-    </li>
+    <li><a href="index.html" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
+    <li><a href="services.html" data-en="Services" data-ar="الخدمات">الخدمات</a></li>
+    <li><a href="about.html" class="active" data-en="About" data-ar="عن الشركة">عن الشركة</a></li>
+    <li><button class="mobile-quote-btn" id="mobileContactBtn" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</button></li>
   </ul>
 </div>
 <div class="overlay" id="overlay"></div>
@@ -535,12 +557,12 @@
 <section class="about-hero">
   <div class="container">
     <div class="hero-content reveal">
-      <h1>Driving <span>Logistics</span> Excellence</h1>
-      <p>حلول لوجستية متكاملة بأعلى معايير الجودة والشفافية. نقدم خدمات النقل والتخزين عبر شبكة واسعة مع التزام تام بمواعيد التسليم وسلامة الشحنات.</p>
+      <h1 id="heroTitle">ريادة <span>لوجستية</span></h1>
+      <p id="heroDesc">حلول لوجستية متكاملة بأعلى معايير الجودة والشفافية. نقدم خدمات النقل والتخزين عبر شبكة واسعة مع التزام تام بمواعيد التسليم وسلامة الشحنات.</p>
       <div class="hero-stats">
-        <div><h3>350+</h3><p>Fleet Vehicles</p></div>
-        <div><h3>98%</h3><p>On-Time Delivery</p></div>
-        <div><h3>24/7</h3><p>Client Support</p></div>
+        <div><h3>350+</h3><p id="stat1">أسطول شاحنات</p></div>
+        <div><h3>98%</h3><p id="stat2">تسليم في الوقت</p></div>
+        <div><h3>24/7</h3><p id="stat3">دعم العملاء</p></div>
       </div>
     </div>
   </div>
@@ -549,82 +571,82 @@
 <div class="container">
   <!-- Mission & Vision -->
   <div class="mission-vision reveal">
-    <div class="mv-card"><i class="fas fa-bullseye"></i><h3>من نحن</h3><p>نحن نقدم خدمات النقل لصالح الغير والخدمات اللوجستية بكافة انواعها مع اعلى معايير الجودة والامانة مع فريق متميز من خبرات وكفاءات و فريق متميز من خدمة العملاء لخدمة عملاء على مدار الساعة.</p></div>
-    <div class="mv-card"><i class="fas fa-globe-asia"></i><h3>رؤيتنا</h3><p>أن نكون الخيار الأول في مجال الخدمات اللوجستية على مستوى المملكة، من خلال تقديم حلول نقل وتخزين مبتكرة وسريعة وموثوقة، تواكب تطورات السوق وتحقق أعلى مستويات رضا العملاء، مع الالتزام بالجودة والاستدامة.</p></div>
+    <div class="mv-card"><i class="fas fa-bullseye"></i><h3 id="missionTitle">من نحن</h3><p id="missionDesc">نحن نقدم خدمات النقل لصالح الغير والخدمات اللوجستية بكافة انواعها مع اعلى معايير الجودة والامانة مع فريق متميز من خبرات وكفاءات و فريق متميز من خدمة العملاء لخدمة عملاء على مدار الساعة.</p></div>
+    <div class="mv-card"><i class="fas fa-globe-asia"></i><h3 id="visionTitle">رؤيتنا</h3><p id="visionDesc">أن نكون الخيار الأول في مجال الخدمات اللوجستية على مستوى المملكة، من خلال تقديم حلول نقل وتخزين مبتكرة وسريعة وموثوقة، تواكب تطورات السوق وتحقق أعلى مستويات رضا العملاء، مع الالتزام بالجودة والاستدامة.</p></div>
   </div>
 
   <!-- Strategic Goals -->
-  <div class="reveal"><div class="section-title" style="text-align:center; margin-bottom:20px;"><span style="color:#ff8800;">خارطة طريق نحو الريادة</span><h2 style="font-size: 42px;">أهدافنا الاستراتيجية</h2></div></div>
+  <div class="reveal"><div class="section-title"><span id="goalsBadge">خارطة طريق نحو الريادة</span><h2 id="goalsTitle">أهدافنا الاستراتيجية</h2></div></div>
   <div class="strategy-grid reveal">
-    <div class="strategy-card"><i class="fas fa-chart-line"></i><h4>التوسع والنمو</h4><p>توسيع نطاق الخدمات لتغطية أسواق جديدة</p></div>
-    <div class="strategy-card"><i class="fas fa-handshake"></i><h4>الشراكات والعملاء</h4><p>بناء علاقات استراتيجية دائمة</p></div>
-    <div class="strategy-card"><i class="fas fa-microchip"></i><h4>التميز التشغيلي</h4><p>تحسين الكفاءة والجودة التشغيلية</p></div>
+    <div class="strategy-card"><i class="fas fa-chart-line"></i><h4 id="goal1Title">التوسع والنمو</h4><p id="goal1Desc">توسيع نطاق الخدمات لتغطية أسواق جديدة</p></div>
+    <div class="strategy-card"><i class="fas fa-handshake"></i><h4 id="goal2Title">الشراكات والعملاء</h4><p id="goal2Desc">بناء علاقات استراتيجية دائمة</p></div>
+    <div class="strategy-card"><i class="fas fa-microchip"></i><h4 id="goal3Title">التميز التشغيلي</h4><p id="goal3Desc">تحسين الكفاءة والجودة التشغيلية</p></div>
   </div>
   <div class="center-logo-large reveal"><img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY core"></div>
 
   <!-- Operational Excellence -->
-  <div class="reveal"><div class="section-title" style="text-align:center; margin:40px 0 20px;"><span style="color:#ff8800;">كفاءة وتقنية</span><h2 style="font-size: 42px;">التميز التشغيلي والتقني</h2></div></div>
+  <div class="reveal"><div class="section-title"><span id="opExBadge">كفاءة وتقنية</span><h2 id="opExTitle">التميز التشغيلي والتقني</h2></div></div>
   <div class="excellence-grid reveal">
-    <div class="excellence-item"><i class="fas fa-shield-alt"></i><h3>السلامة والأمان</h3><p>الالتزام بمعايير السلامة في جميع مراحل النقل والتخزين.</p></div>
-    <div class="excellence-item"><i class="fas fa-radar"></i><h3>التقنية المتقدمة</h3><p>استخدام أحدث التقنيات لتتبع الشحنات وتحسين العمليات.</p></div>
-    <div class="excellence-item"><i class="fas fa-cogs"></i><h3>الكفاءة والسرعة</h3><p>تقديم خدمات سريعة وموثوقة مع تقليل التكاليف وجودة عالية.</p></div>
+    <div class="excellence-item"><i class="fas fa-shield-alt"></i><h3 id="op1Title">السلامة والأمان</h3><p id="op1Desc">الالتزام بمعايير السلامة في جميع مراحل النقل والتخزين.</p></div>
+    <div class="excellence-item"><i class="fas fa-radar"></i><h3 id="op2Title">التقنية المتقدمة</h3><p id="op2Desc">استخدام أحدث التقنيات لتتبع الشحنات وتحسين العمليات.</p></div>
+    <div class="excellence-item"><i class="fas fa-cogs"></i><h3 id="op3Title">الكفاءة والسرعة</h3><p id="op3Desc">تقديم خدمات سريعة وموثوقة مع تقليل التكاليف وجودة عالية.</p></div>
   </div>
 
   <!-- Growth and Partnerships + Map -->
   <div class="growth-section reveal">
     <div class="growth-left">
-      <h3>النمو، العملاء، والشراكات</h3>
+      <h3 id="growthTitle">النمو، العملاء، والشراكات</h3>
       <ul class="growth-list">
-        <li><i class="fas fa-map-marked-alt"></i><span><strong>التوسع الجغرافي</strong><br>تغطية أكبر عدد من المدن والمناطق</span></li>
-        <li><i class="fas fa-smile"></i><span><strong>رضا العملاء</strong><br>جودة الخدمة والالتزام بالمواعيد</span></li>
-        <li><i class="fas fa-handshake"></i><span><strong>شراكات مستدامة</strong><br>علاقات طويلة الأمد مع العملاء والشركاء</span></li>
+        <li><i class="fas fa-map-marked-alt"></i><span><strong id="growth1Title">التوسع الجغرافي</strong><br id="growth1Desc">تغطية أكبر عدد من المدن والمناطق</span></li>
+        <li><i class="fas fa-smile"></i><span><strong id="growth2Title">رضا العملاء</strong><br id="growth2Desc">جودة الخدمة والالتزام بالمواعيد</span></li>
+        <li><i class="fas fa-handshake"></i><span><strong id="growth3Title">شراكات مستدامة</strong><br id="growth3Desc">علاقات طويلة الأمد مع العملاء والشركاء</span></li>
       </ul>
     </div>
     <div class="growth-map">
-      <i class="fas fa-map" style="font-size: 60px; color:#ff8800;"></i>
-      <h4 style="margin: 15px 0;">حضورنا في المملكة</h4>
+      <i class="fas fa-map" style="font-size: 60px; color:#dc2626;"></i>
+      <h4 style="margin: 15px 0;" id="mapTitle">حضورنا في المملكة</h4>
       <div class="city-dots">
         <div class="city-dot"><span>الرياض</span></div>
         <div class="city-dot"><span>جدة</span></div>
         <div class="city-dot"><span>الدمام</span></div>
         <div class="city-dot"><span>مكة</span></div>
       </div>
-      <p style="margin-top: 35px;">شبكة لوجستية تغطي كافة أنحاء المملكة</p>
+      <p style="margin-top: 35px;" id="mapDesc">شبكة لوجستية تغطي كافة أنحاء المملكة</p>
     </div>
   </div>
 
   <!-- Values (7 items) -->
-  <div class="reveal"><div class="section-title" style="text-align:center;"><span style="color:#ff8800;">مبادئنا</span><h2 style="font-size: 42px;">قيمنا المؤسسية</h2></div></div>
+  <div class="reveal"><div class="section-title"><span id="valuesBadge">مبادئنا</span><h2 id="valuesTitle">قيمنا المؤسسية</h2></div></div>
   <div class="values-modern reveal">
-    <div class="value-modern"><i class="fas fa-handshake"></i><h4>رضا العملاء</h4></div>
-    <div class="value-modern"><i class="fas fa-shield-alt"></i><h4>الموثوقية</h4></div>
-    <div class="value-modern"><i class="fas fa-briefcase"></i><h4>الاحترافية</h4></div>
-    <div class="value-modern"><i class="fas fa-lightbulb"></i><h4>الابتكار</h4></div>
-    <div class="value-modern"><i class="fas fa-file-alt"></i><h4>الشفافية</h4></div>
-    <div class="value-modern"><i class="fas fa-hard-hat"></i><h4>السلامة</h4></div>
-    <div class="value-modern"><i class="fas fa-users"></i><h4>العمل بروح الفريق</h4></div>
+    <div class="value-modern"><i class="fas fa-handshake"></i><h4 id="val1">رضا العملاء</h4></div>
+    <div class="value-modern"><i class="fas fa-shield-alt"></i><h4 id="val2">الموثوقية</h4></div>
+    <div class="value-modern"><i class="fas fa-briefcase"></i><h4 id="val3">الاحترافية</h4></div>
+    <div class="value-modern"><i class="fas fa-lightbulb"></i><h4 id="val4">الابتكار</h4></div>
+    <div class="value-modern"><i class="fas fa-file-alt"></i><h4 id="val5">الشفافية</h4></div>
+    <div class="value-modern"><i class="fas fa-hard-hat"></i><h4 id="val6">السلامة</h4></div>
+    <div class="value-modern"><i class="fas fa-users"></i><h4 id="val7">العمل بروح الفريق</h4></div>
   </div>
 
   <!-- Dual axis -->
   <div class="dual-axis reveal">
-    <div class="axis-card"><h3><i class="fas fa-microchip"></i> محور التشغيل</h3><p><strong>الابتكار:</strong> نستخدم أحدث التقنيات لتطوير خدماتنا وتحسين تجربة العملاء.<br><strong>الاحترافية:</strong> نعمل وفق أعلى المعايير المهنية في جميع خدماتنا.</p></div>
-    <div class="axis-card"><h3><i class="fas fa-users"></i> محور العملاء</h3><p><strong>رضا العملاء:</strong> نضع احتياجات عملائنا في مقدمة أولوياتنا ونسعى لتجاوز توقعاتهم.<br><strong>الشفافية:</strong> نؤمن بالوضوح في التعامل وتقديم معلومات دقيقة لعملائنا.</p></div>
+    <div class="axis-card"><h3><i class="fas fa-microchip"></i> <span id="axis1Title">محور التشغيل</span></h3><p id="axis1Desc"><strong>الابتكار:</strong> نستخدم أحدث التقنيات لتطوير خدماتنا وتحسين تجربة العملاء.<br><strong>الاحترافية:</strong> نعمل وفق أعلى المعايير المهنية في جميع خدماتنا.</p></div>
+    <div class="axis-card"><h3><i class="fas fa-users"></i> <span id="axis2Title">محور العملاء</span></h3><p id="axis2Desc"><strong>رضا العملاء:</strong> نضع احتياجات عملائنا في مقدمة أولوياتنا ونسعى لتجاوز توقعاتهم.<br><strong>الشفافية:</strong> نؤمن بالوضوح في التعامل وتقديم معلومات دقيقة لعملائنا.</p></div>
   </div>
 
   <!-- Field execution -->
   <div class="excellence-grid reveal" style="margin: 20px 0;">
-    <div class="excellence-item"><i class="fas fa-hard-hat"></i><h3>السلامة</h3><p>نلتزم بأعلى معايير السلامة في جميع العمليات.</p></div>
-    <div class="excellence-item"><i class="fas fa-clock"></i><h3>الموثوقية</h3><p>تسليم الشحنات في الوقت المحدد بأعلى درجات الأمان.</p></div>
-    <div class="excellence-item"><i class="fas fa-users"></i><h3>العمل بروح الفريق</h3><p>النجاح يتحقق بالتعاون والعمل الجماعي.</p></div>
+    <div class="excellence-item"><i class="fas fa-hard-hat"></i><h3 id="field1Title">السلامة</h3><p id="field1Desc">نلتزم بأعلى معايير السلامة في جميع العمليات.</p></div>
+    <div class="excellence-item"><i class="fas fa-clock"></i><h3 id="field2Title">الموثوقية</h3><p id="field2Desc">تسليم الشحنات في الوقت المحدد بأعلى درجات الأمان.</p></div>
+    <div class="excellence-item"><i class="fas fa-users"></i><h3 id="field3Title">العمل بروح الفريق</h3><p id="field3Desc">النجاح يتحقق بالتعاون والعمل الجماعي.</p></div>
   </div>
 
   <!-- Integrated services + truck -->
   <div class="integrated-section reveal">
     <div class="integrated-features">
-      <div class="feature-item"><i class="fas fa-cogs"></i><div><h4>حلول لوجستية بكافة أنواعها</h4><p>خدمات شاملة ومتكاملة</p></div></div>
-      <div class="feature-item"><i class="fas fa-truck"></i><div><h4>النقل لصالح الغير</h4><p>أسطول حديث ومجهز</p></div></div>
-      <div class="feature-item"><i class="fas fa-headset"></i><div><h4>خدمة عملاء على مدار الساعة</h4><p>دعم فوري 24/7</p></div></div>
-      <div class="feature-item"><i class="fas fa-chalkboard-user"></i><div><h4>فريق من الخبرات والكفاءات</h4><p>احترافية وكفاءة عالية</p></div></div>
+      <div class="feature-item"><i class="fas fa-cogs"></i><div><h4 id="integ1Title">حلول لوجستية بكافة أنواعها</h4><p id="integ1Desc">خدمات شاملة ومتكاملة</p></div></div>
+      <div class="feature-item"><i class="fas fa-truck"></i><div><h4 id="integ2Title">النقل لصالح الغير</h4><p id="integ2Desc">أسطول حديث ومجهز</p></div></div>
+      <div class="feature-item"><i class="fas fa-headset"></i><div><h4 id="integ3Title">خدمة عملاء على مدار الساعة</h4><p id="integ3Desc">دعم فوري 24/7</p></div></div>
+      <div class="feature-item"><i class="fas fa-chalkboard-user"></i><div><h4 id="integ4Title">فريق من الخبرات والكفاءات</h4><p id="integ4Desc">احترافية وكفاءة عالية</p></div></div>
     </div>
     <div>
       <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&auto=format" alt="HUBWAY Truck" class="truck-img">
@@ -633,31 +655,63 @@
   </div>
 </div>
 
+<!-- Quote Section -->
+<section class="quote-section" id="quote">
+  <div class="container">
+    <div class="quote-wrapper">
+      <div class="quote-left">
+        <h3 id="quoteTitle"><i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟</h3>
+        <p id="quoteDesc">احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.</p>
+        <div class="contact-info-item"><i class="fas fa-phone-alt"></i><div><strong id="hotlineLabel">الخط الساخن</strong><br>+966 55 000 1234</div></div>
+        <div class="contact-info-item"><i class="fas fa-envelope"></i><div><strong id="emailLabel">البريد الإلكتروني</strong><br>dispatch@hubway.com</div></div>
+        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><strong id="addressLabel">المقر الرئيسي</strong><br>الرياض، المملكة العربية السعودية</div></div>
+      </div>
+      <div class="quote-right">
+        <form id="quickQuoteForm">
+          <div class="form-group"><input type="text" id="nameInput" placeholder="الاسم كاملاً *" required></div>
+          <div class="form-group"><input type="email" id="emailInput" placeholder="البريد الإلكتروني *" required></div>
+          <div class="form-group"><input type="tel" id="phoneInput" placeholder="رقم الجوال"></div>
+          <div class="form-group">
+            <select id="serviceSelect">
+              <option value="ar">اختر نوع الخدمة</option>
+              <option value="freight">النقل البري</option>
+              <option value="warehouse">التخزين</option>
+              <option value="express">التوصيل السريع</option>
+              <option value="intl">الشحن الدولي</option>
+            </select>
+          </div>
+          <div class="form-group"><textarea id="messageInput" rows="2" placeholder="تفاصيل الشحنة أو الرسالة..."></textarea></div>
+          <button type="submit" class="quote-btn" id="submitBtn" data-ar="إرسال الطلب" data-en="Send Request">إرسال الطلب <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Footer -->
 <footer class="footer">
   <div class="container">
     <div class="footer-container">
-      <div class="footer-col"><h4>HUBWAY</h4><p>حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div></div>
-      <div class="footer-col"><h4>Quick Links</h4><div class="footer-links"><a href="home.html"><i class="fas fa-chevron-right"></i> Home</a><a href="services.html"><i class="fas fa-chevron-right"></i> Services</a><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a><a href="#quote"><i class="fas fa-chevron-right"></i> Get Quote</a></div></div>
-      <div class="footer-col"><h4>Our Services</h4><div class="footer-links"><a href="#"><i class="fas fa-truck"></i> Ground Freight</a><a href="#"><i class="fas fa-ship"></i> Ocean Freight</a><a href="#"><i class="fas fa-boxes"></i> 3PL Warehousing</a></div></div>
-      <div class="footer-col"><h4>Newsletter</h4><p>اشترك لتحصل على آخر العروض</p><div class="newsletter-form"><input type="email" placeholder="Your email"><button><i class="fas fa-paper-plane"></i></button></div></div>
+      <div class="footer-col"><h4>HUBWAY</h4><p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div></div>
+      <div class="footer-col"><h4 id="quickLinksTitle">روابط سريعة</h4><div class="footer-links"><a href="index.html" id="footerHome" data-ar="الرئيسية" data-en="Home">الرئيسية</a><a href="services.html" id="footerServices" data-ar="الخدمات" data-en="Services">الخدمات</a><a href="about.html" id="footerAbout" data-ar="عن الشركة" data-en="About Us">عن الشركة</a><a href="#quote" id="footerQuote" data-ar="طلب عرض سعر" data-en="Get a Quote">طلب عرض سعر</a></div></div>
+      <div class="footer-col"><h4 id="servicesListTitle">خدماتنا</h4><div class="footer-links"><a href="#" id="footerService1" data-ar="النقل البري" data-en="Ground Freight">النقل البري</a><a href="#" id="footerService2" data-ar="الشحن البحري" data-en="Ocean Freight">الشحن البحري</a><a href="#" id="footerService3" data-ar="التخزين اللوجستي" data-en="3PL Warehousing">التخزين اللوجستي</a></div></div>
+      <div class="footer-col"><h4 id="newsletterTitle">النشرة البريدية</h4><p id="newsletterDesc">اشترك لتحصل على آخر العروض</p><div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="بريدك الإلكتروني"><button id="newsletterBtn" data-ar="اشتراك" data-en="Subscribe"><i class="fas fa-paper-plane"></i></button></div></div>
     </div>
-    <div class="copyright"><p>© 2025 HUBWAY Logistics | جميع الحقوق محفوظة</p></div>
+    <div class="copyright"><p id="copyrightText">© 2025 HUBWAY Logistics | جميع الحقوق محفوظة</p></div>
   </div>
 </footer>
+
+<!-- Floating WhatsApp -->
 <a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
+
 <script>
+  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
-  // إضافة حدث التمرير لتغيير النافبار
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
+    if(window.scrollY > 40) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
   });
 
   // Mobile menu logic
@@ -670,16 +724,336 @@
   menuToggle.addEventListener('click', openMenu);
   closeMenu.addEventListener('click', closeMenuFunc);
   overlay.addEventListener('click', closeMenuFunc);
-  // Mobile quote button
-  document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
-  // Desktop quote button
+
+  // Buttons scroll
   document.getElementById('navContactBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
-  // Quote form
+  document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
+
+  // Form submission
   const quoteForm = document.getElementById('quickQuoteForm');
-  if(quoteForm) quoteForm.addEventListener('submit', (e) => { e.preventDefault(); alert('✅ Thank you! HUBWAY team will reach you within 24h.'); quoteForm.reset(); });
+  if(quoteForm) quoteForm.addEventListener('submit', (e) => { e.preventDefault(); alert('✅ شكراً! سيتواصل معكم فريق HUBWAY خلال 24 ساعة.'); quoteForm.reset(); });
+
   // Newsletter
   const newsletterBtn = document.querySelector('.newsletter-form button');
-  if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert('📧 Subscribed!'); inp.value=''; } else alert('Enter email'); });
+  if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert('📧 تم الاشتراك بنجاح!'); inp.value=''; } else alert('الرجاء إدخال بريد إلكتروني'); });
+
+  // Full Translation Object
+  const translations = {
+    ar: {
+      logoSubtitle: 'حلول لوجستية سريعة',
+      navContact: 'اتصل بنا',
+      heroTitle: 'ريادة <span>لوجستية</span>',
+      heroDesc: 'حلول لوجستية متكاملة بأعلى معايير الجودة والشفافية. نقدم خدمات النقل والتخزين عبر شبكة واسعة مع التزام تام بمواعيد التسليم وسلامة الشحنات.',
+      stat1: 'أسطول شاحنات',
+      stat2: 'تسليم في الوقت',
+      stat3: 'دعم العملاء',
+      missionTitle: 'من نحن',
+      missionDesc: 'نحن نقدم خدمات النقل لصالح الغير والخدمات اللوجستية بكافة انواعها مع اعلى معايير الجودة والامانة مع فريق متميز من خبرات وكفاءات و فريق متميز من خدمة العملاء لخدمة عملاء على مدار الساعة.',
+      visionTitle: 'رؤيتنا',
+      visionDesc: 'أن نكون الخيار الأول في مجال الخدمات اللوجستية على مستوى المملكة، من خلال تقديم حلول نقل وتخزين مبتكرة وسريعة وموثوقة، تواكب تطورات السوق وتحقق أعلى مستويات رضا العملاء، مع الالتزام بالجودة والاستدامة.',
+      goalsBadge: 'خارطة طريق نحو الريادة',
+      goalsTitle: 'أهدافنا الاستراتيجية',
+      goal1Title: 'التوسع والنمو',
+      goal1Desc: 'توسيع نطاق الخدمات لتغطية أسواق جديدة',
+      goal2Title: 'الشراكات والعملاء',
+      goal2Desc: 'بناء علاقات استراتيجية دائمة',
+      goal3Title: 'التميز التشغيلي',
+      goal3Desc: 'تحسين الكفاءة والجودة التشغيلية',
+      opExBadge: 'كفاءة وتقنية',
+      opExTitle: 'التميز التشغيلي والتقني',
+      op1Title: 'السلامة والأمان',
+      op1Desc: 'الالتزام بمعايير السلامة في جميع مراحل النقل والتخزين.',
+      op2Title: 'التقنية المتقدمة',
+      op2Desc: 'استخدام أحدث التقنيات لتتبع الشحنات وتحسين العمليات.',
+      op3Title: 'الكفاءة والسرعة',
+      op3Desc: 'تقديم خدمات سريعة وموثوقة مع تقليل التكاليف وجودة عالية.',
+      growthTitle: 'النمو، العملاء، والشراكات',
+      growth1Title: 'التوسع الجغرافي',
+      growth1Desc: 'تغطية أكبر عدد من المدن والمناطق',
+      growth2Title: 'رضا العملاء',
+      growth2Desc: 'جودة الخدمة والالتزام بالمواعيد',
+      growth3Title: 'شراكات مستدامة',
+      growth3Desc: 'علاقات طويلة الأمد مع العملاء والشركاء',
+      mapTitle: 'حضورنا في المملكة',
+      mapDesc: 'شبكة لوجستية تغطي كافة أنحاء المملكة',
+      valuesBadge: 'مبادئنا',
+      valuesTitle: 'قيمنا المؤسسية',
+      val1: 'رضا العملاء',
+      val2: 'الموثوقية',
+      val3: 'الاحترافية',
+      val4: 'الابتكار',
+      val5: 'الشفافية',
+      val6: 'السلامة',
+      val7: 'العمل بروح الفريق',
+      axis1Title: 'محور التشغيل',
+      axis1Desc: '<strong>الابتكار:</strong> نستخدم أحدث التقنيات لتطوير خدماتنا وتحسين تجربة العملاء.<br><strong>الاحترافية:</strong> نعمل وفق أعلى المعايير المهنية في جميع خدماتنا.',
+      axis2Title: 'محور العملاء',
+      axis2Desc: '<strong>رضا العملاء:</strong> نضع احتياجات عملائنا في مقدمة أولوياتنا ونسعى لتجاوز توقعاتهم.<br><strong>الشفافية:</strong> نؤمن بالوضوح في التعامل وتقديم معلومات دقيقة لعملائنا.',
+      field1Title: 'السلامة',
+      field1Desc: 'نلتزم بأعلى معايير السلامة في جميع العمليات.',
+      field2Title: 'الموثوقية',
+      field2Desc: 'تسليم الشحنات في الوقت المحدد بأعلى درجات الأمان.',
+      field3Title: 'العمل بروح الفريق',
+      field3Desc: 'النجاح يتحقق بالتعاون والعمل الجماعي.',
+      integ1Title: 'حلول لوجستية بكافة أنواعها',
+      integ1Desc: 'خدمات شاملة ومتكاملة',
+      integ2Title: 'النقل لصالح الغير',
+      integ2Desc: 'أسطول حديث ومجهز',
+      integ3Title: 'خدمة عملاء على مدار الساعة',
+      integ3Desc: 'دعم فوري 24/7',
+      integ4Title: 'فريق من الخبرات والكفاءات',
+      integ4Desc: 'احترافية وكفاءة عالية',
+      quoteTitle: '<i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟',
+      quoteDesc: 'احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.',
+      hotlineLabel: 'الخط الساخن',
+      emailLabel: 'البريد الإلكتروني',
+      addressLabel: 'المقر الرئيسي',
+      namePlaceholder: 'الاسم كاملاً *',
+      emailPlaceholder: 'البريد الإلكتروني *',
+      phonePlaceholder: 'رقم الجوال',
+      selectDefault: 'اختر نوع الخدمة',
+      selectFreight: 'النقل البري',
+      selectWarehouse: 'التخزين',
+      selectExpress: 'التوصيل السريع',
+      selectIntl: 'الشحن الدولي',
+      messagePlaceholder: 'تفاصيل الشحنة أو الرسالة...',
+      submitBtn: 'إرسال الطلب',
+      footerDesc: 'حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.',
+      quickLinksTitle: 'روابط سريعة',
+      footerHome: 'الرئيسية',
+      footerServices: 'الخدمات',
+      footerAbout: 'عن الشركة',
+      footerQuote: 'طلب عرض سعر',
+      servicesListTitle: 'خدماتنا',
+      footerService1: 'النقل البري',
+      footerService2: 'الشحن البحري',
+      footerService3: 'التخزين اللوجستي',
+      newsletterTitle: 'النشرة البريدية',
+      newsletterDesc: 'اشترك لتحصل على آخر العروض',
+      newsletterPlaceholder: 'بريدك الإلكتروني',
+      newsletterBtnText: 'اشتراك',
+      copyright: '© 2025 HUBWAY Logistics | جميع الحقوق محفوظة'
+    },
+    en: {
+      logoSubtitle: 'Fast Logistics Solutions',
+      navContact: 'Contact Us',
+      heroTitle: 'Driving <span>Logistics</span> Excellence',
+      heroDesc: 'Integrated logistics solutions with the highest quality and transparency standards. We provide transport and warehousing services across a wide network with full commitment to delivery times and cargo safety.',
+      stat1: 'Fleet Vehicles',
+      stat2: 'On-Time Delivery',
+      stat3: 'Client Support',
+      missionTitle: 'Who We Are',
+      missionDesc: 'We provide third-party transport and all types of logistics services with the highest quality and integrity standards, with a distinguished team of expertise and competencies, and a distinguished customer service team to serve customers around the clock.',
+      visionTitle: 'Our Vision',
+      visionDesc: 'To be the first choice in the field of logistics services in the Kingdom, by providing innovative, fast and reliable transport and storage solutions that keep pace with market developments and achieve the highest levels of customer satisfaction, with commitment to quality and sustainability.',
+      goalsBadge: 'Roadmap to Leadership',
+      goalsTitle: 'Our Strategic Goals',
+      goal1Title: 'Expansion & Growth',
+      goal1Desc: 'Expanding service scope to cover new markets',
+      goal2Title: 'Partnerships & Clients',
+      goal2Desc: 'Building long-term strategic relationships',
+      goal3Title: 'Operational Excellence',
+      goal3Desc: 'Improving efficiency and operational quality',
+      opExBadge: 'Efficiency & Technology',
+      opExTitle: 'Operational & Technical Excellence',
+      op1Title: 'Safety & Security',
+      op1Desc: 'Commitment to safety standards in all transport and storage stages.',
+      op2Title: 'Advanced Technology',
+      op2Desc: 'Using latest technologies to track shipments and improve operations.',
+      op3Title: 'Efficiency & Speed',
+      op3Desc: 'Providing fast and reliable services, reducing costs while maintaining quality.',
+      growthTitle: 'Growth, Clients & Partnerships',
+      growth1Title: 'Geographic Expansion',
+      growth1Desc: 'Expanding service coverage to more cities and regions',
+      growth2Title: 'Customer Satisfaction',
+      growth2Desc: 'Service quality and on-time commitment',
+      growth3Title: 'Sustainable Partnerships',
+      growth3Desc: 'Building long-term relationships with clients and partners',
+      mapTitle: 'Our Presence in the Kingdom',
+      mapDesc: 'Logistics network covering all parts of the Kingdom',
+      valuesBadge: 'Our Principles',
+      valuesTitle: 'Our Core Values',
+      val1: 'Customer Satisfaction',
+      val2: 'Reliability',
+      val3: 'Professionalism',
+      val4: 'Innovation',
+      val5: 'Transparency',
+      val6: 'Safety',
+      val7: 'Team Spirit',
+      axis1Title: 'Operations Axis',
+      axis1Desc: '<strong>Innovation:</strong> We use the latest technologies to develop our services and improve customer experience.<br><strong>Professionalism:</strong> We work according to the highest professional standards in all our services.',
+      axis2Title: 'Customer Axis',
+      axis2Desc: '<strong>Customer Satisfaction:</strong> We put our clients\' needs at the forefront and strive to exceed their expectations.<br><strong>Transparency:</strong> We believe in clarity in dealing and providing accurate information to our clients.',
+      field1Title: 'Safety',
+      field1Desc: 'We adhere to the highest safety standards in all operations.',
+      field2Title: 'Reliability',
+      field2Desc: 'Delivering shipments on time with the highest levels of security.',
+      field3Title: 'Team Spirit',
+      field3Desc: 'Success is achieved through collaboration and teamwork.',
+      integ1Title: 'All types of logistics solutions',
+      integ1Desc: 'Comprehensive and integrated services',
+      integ2Title: 'Third-party transport',
+      integ2Desc: 'Modern and equipped fleet',
+      integ3Title: '24/7 Customer Service',
+      integ3Desc: 'Immediate support 24/7',
+      integ4Title: 'Team of expertise and competencies',
+      integ4Desc: 'Professionalism and high efficiency',
+      quoteTitle: '<i class="fas fa-headset"></i> Need Logistics Support?',
+      quoteDesc: 'Get an instant quote for your shipments. Our team will contact you within 24 hours to tailor the best solution.',
+      hotlineLabel: 'Hotline',
+      emailLabel: 'Email',
+      addressLabel: 'HQ Office',
+      namePlaceholder: 'Full Name *',
+      emailPlaceholder: 'Email Address *',
+      phonePlaceholder: 'Phone Number',
+      selectDefault: 'Select Service Type',
+      selectFreight: 'Freight Transport',
+      selectWarehouse: 'Warehousing',
+      selectExpress: 'Express Delivery',
+      selectIntl: 'International Shipping',
+      messagePlaceholder: 'Message or cargo details...',
+      submitBtn: 'Send Request',
+      footerDesc: 'Innovative and fast logistics solutions connecting markets with confidence.',
+      quickLinksTitle: 'Quick Links',
+      footerHome: 'Home',
+      footerServices: 'Services',
+      footerAbout: 'About Us',
+      footerQuote: 'Get a Quote',
+      servicesListTitle: 'Our Services',
+      footerService1: 'Ground Freight',
+      footerService2: 'Ocean Freight',
+      footerService3: '3PL Warehousing',
+      newsletterTitle: 'Newsletter',
+      newsletterDesc: 'Subscribe to get the latest offers',
+      newsletterPlaceholder: 'Your email',
+      newsletterBtnText: 'Subscribe',
+      copyright: '© 2025 HUBWAY Logistics | All rights reserved'
+    }
+  };
+
+  let currentLang = 'ar';
+  const langBtn = document.getElementById('langToggle');
+
+  function applyLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+    // Update all elements with IDs
+    document.getElementById('logoSubtitle').textContent = t.logoSubtitle;
+    document.getElementById('navContactBtn').textContent = t.navContact;
+    document.getElementById('mobileContactBtn').textContent = t.navContact;
+    document.getElementById('heroTitle').innerHTML = t.heroTitle;
+    document.getElementById('heroDesc').textContent = t.heroDesc;
+    document.getElementById('stat1').textContent = t.stat1;
+    document.getElementById('stat2').textContent = t.stat2;
+    document.getElementById('stat3').textContent = t.stat3;
+    document.getElementById('missionTitle').textContent = t.missionTitle;
+    document.getElementById('missionDesc').textContent = t.missionDesc;
+    document.getElementById('visionTitle').textContent = t.visionTitle;
+    document.getElementById('visionDesc').textContent = t.visionDesc;
+    document.getElementById('goalsBadge').textContent = t.goalsBadge;
+    document.getElementById('goalsTitle').textContent = t.goalsTitle;
+    document.getElementById('goal1Title').textContent = t.goal1Title;
+    document.getElementById('goal1Desc').textContent = t.goal1Desc;
+    document.getElementById('goal2Title').textContent = t.goal2Title;
+    document.getElementById('goal2Desc').textContent = t.goal2Desc;
+    document.getElementById('goal3Title').textContent = t.goal3Title;
+    document.getElementById('goal3Desc').textContent = t.goal3Desc;
+    document.getElementById('opExBadge').textContent = t.opExBadge;
+    document.getElementById('opExTitle').textContent = t.opExTitle;
+    document.getElementById('op1Title').textContent = t.op1Title;
+    document.getElementById('op1Desc').textContent = t.op1Desc;
+    document.getElementById('op2Title').textContent = t.op2Title;
+    document.getElementById('op2Desc').textContent = t.op2Desc;
+    document.getElementById('op3Title').textContent = t.op3Title;
+    document.getElementById('op3Desc').textContent = t.op3Desc;
+    document.getElementById('growthTitle').textContent = t.growthTitle;
+    document.getElementById('growth1Title').textContent = t.growth1Title;
+    document.getElementById('growth1Desc').textContent = t.growth1Desc;
+    document.getElementById('growth2Title').textContent = t.growth2Title;
+    document.getElementById('growth2Desc').textContent = t.growth2Desc;
+    document.getElementById('growth3Title').textContent = t.growth3Title;
+    document.getElementById('growth3Desc').textContent = t.growth3Desc;
+    document.getElementById('mapTitle').textContent = t.mapTitle;
+    document.getElementById('mapDesc').textContent = t.mapDesc;
+    document.getElementById('valuesBadge').textContent = t.valuesBadge;
+    document.getElementById('valuesTitle').textContent = t.valuesTitle;
+    document.getElementById('val1').textContent = t.val1;
+    document.getElementById('val2').textContent = t.val2;
+    document.getElementById('val3').textContent = t.val3;
+    document.getElementById('val4').textContent = t.val4;
+    document.getElementById('val5').textContent = t.val5;
+    document.getElementById('val6').textContent = t.val6;
+    document.getElementById('val7').textContent = t.val7;
+    document.getElementById('axis1Title').textContent = t.axis1Title;
+    document.getElementById('axis1Desc').innerHTML = t.axis1Desc;
+    document.getElementById('axis2Title').textContent = t.axis2Title;
+    document.getElementById('axis2Desc').innerHTML = t.axis2Desc;
+    document.getElementById('field1Title').textContent = t.field1Title;
+    document.getElementById('field1Desc').textContent = t.field1Desc;
+    document.getElementById('field2Title').textContent = t.field2Title;
+    document.getElementById('field2Desc').textContent = t.field2Desc;
+    document.getElementById('field3Title').textContent = t.field3Title;
+    document.getElementById('field3Desc').textContent = t.field3Desc;
+    document.getElementById('integ1Title').textContent = t.integ1Title;
+    document.getElementById('integ1Desc').textContent = t.integ1Desc;
+    document.getElementById('integ2Title').textContent = t.integ2Title;
+    document.getElementById('integ2Desc').textContent = t.integ2Desc;
+    document.getElementById('integ3Title').textContent = t.integ3Title;
+    document.getElementById('integ3Desc').textContent = t.integ3Desc;
+    document.getElementById('integ4Title').textContent = t.integ4Title;
+    document.getElementById('integ4Desc').textContent = t.integ4Desc;
+    document.getElementById('quoteTitle').innerHTML = t.quoteTitle;
+    document.getElementById('quoteDesc').textContent = t.quoteDesc;
+    document.getElementById('hotlineLabel').textContent = t.hotlineLabel;
+    document.getElementById('emailLabel').textContent = t.emailLabel;
+    document.getElementById('addressLabel').textContent = t.addressLabel;
+    document.getElementById('nameInput').placeholder = t.namePlaceholder;
+    document.getElementById('emailInput').placeholder = t.emailPlaceholder;
+    document.getElementById('phoneInput').placeholder = t.phonePlaceholder;
+    const selectEl = document.getElementById('serviceSelect');
+    selectEl.options[0].text = t.selectDefault;
+    selectEl.options[1].text = t.selectFreight;
+    selectEl.options[2].text = t.selectWarehouse;
+    selectEl.options[3].text = t.selectExpress;
+    selectEl.options[4].text = t.selectIntl;
+    document.getElementById('messageInput').placeholder = t.messagePlaceholder;
+    document.getElementById('submitBtn').innerHTML = t.submitBtn + ' <i class="fas fa-paper-plane"></i>';
+    document.getElementById('footerDesc').textContent = t.footerDesc;
+    document.getElementById('quickLinksTitle').textContent = t.quickLinksTitle;
+    document.getElementById('footerHome').textContent = t.footerHome;
+    document.getElementById('footerServices').textContent = t.footerServices;
+    document.getElementById('footerAbout').textContent = t.footerAbout;
+    document.getElementById('footerQuote').textContent = t.footerQuote;
+    document.getElementById('servicesListTitle').textContent = t.servicesListTitle;
+    document.getElementById('footerService1').textContent = t.footerService1;
+    document.getElementById('footerService2').textContent = t.footerService2;
+    document.getElementById('footerService3').textContent = t.footerService3;
+    document.getElementById('newsletterTitle').textContent = t.newsletterTitle;
+    document.getElementById('newsletterDesc').textContent = t.newsletterDesc;
+    document.getElementById('newsletterEmail').placeholder = t.newsletterPlaceholder;
+    document.getElementById('newsletterBtn').innerHTML = '<i class="fas fa-paper-plane"></i> ' + t.newsletterBtnText;
+    document.getElementById('copyrightText').textContent = t.copyright;
+
+    // Update nav links (desktop + mobile)
+    document.querySelectorAll('.nav-links a, .mobile-nav ul li a').forEach(link => {
+      const arText = link.getAttribute('data-ar');
+      const enText = link.getAttribute('data-en');
+      if (arText && enText) {
+        link.textContent = lang === 'ar' ? arText : enText;
+      }
+    });
+
+    langBtn.textContent = lang === 'ar' ? 'English' : 'العربية';
+    document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    currentLang = lang;
+  }
+
+  langBtn.addEventListener('click', () => {
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    applyLanguage(newLang);
+  });
+
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('active'); observer.unobserve(e.target); } }); }, { threshold: 0.15 });

@@ -15,8 +15,10 @@
     }
     body {
       font-family: 'Cairo', sans-serif;
-      background: #071426;
-      color: #ffffff;
+      background-color: #ffffff;
+      background-image: linear-gradient(-180deg, rgba(29, 189, 205, 0), rgba(29, 189, 205, 0.1));
+      background-attachment: fixed;
+      color: #1a1a1a;
       overflow-x: hidden;
     }
     a {
@@ -32,10 +34,10 @@
       margin: 0 auto;
     }
     ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0a1a2f; }
-    ::-webkit-scrollbar-thumb { background: #ff8800; border-radius: 10px; }
+    ::-webkit-scrollbar-track { background: #f0f0f0; }
+    ::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 10px; }
 
-    /* Navbar - starts transparent */
+    /* Navbar */
     .navbar {
       position: fixed;
       top: 0;
@@ -44,14 +46,14 @@
       z-index: 999;
       padding: 18px 0;
       transition: 0.4s ease;
-      background: transparent;
-      backdrop-filter: none;
-      border-bottom: none;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
     }
     .navbar.scrolled {
-      background: rgba(7, 20, 38, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 136, 0, 0.2);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     }
     .nav-content {
       display: flex;
@@ -59,93 +61,120 @@
       justify-content: space-between;
       flex-wrap: wrap;
     }
-    /* عكس ترتيب اللوجو والزرار */
-    .nav-content .logo {
-      order: 2; /* اللوجو يظهر في النهاية (يسار الشاشة) */
-    }
-    .nav-content .contact-btn-nav {
-      order: 0; /* الزر يظهر في البداية (يمين الشاشة) */
-    }
-    .nav-content .nav-links {
-      order: 1; /* الروابط في المنتصف */
-    }
-    .mobile-menu-btn {
-      order: 0; /* زر الموبايل بجانب الزر الأصلي */
-      margin-left: 10px;
-    }
-
     .logo {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
     }
     .logo-img {
-      width: 65px;
-      height: 65px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
-      filter: drop-shadow(0 8px 18px rgba(255,136,0,0.4));
-    }
-    .logo h2 {
-      font-size: 28px;
-      font-weight: 900;
-      background: linear-gradient(135deg, #fff, #ffbc6e);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .logo p { color: #cbd5e6; font-size: 11px; }
-    .nav-links { display: flex; gap: 38px; }
-    .nav-links a {
-      font-weight: 600;
-      font-size: 17px;
-      position: relative;
-      color: white;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
       transition: 0.3s;
     }
-    .nav-links a:hover, .nav-links a.active { color: #ff8800; }
+    .logo-img:hover { transform: scale(1.05); }
+    .logo h2 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #dc2626;
+      letter-spacing: -0.5px;
+    }
+    .logo p {
+      color: #555;
+      font-size: 10px;
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      gap: 35px;
+    }
+    .nav-links a {
+      font-weight: 600;
+      transition: 0.3s;
+      font-size: 16px;
+      position: relative;
+      color: #222;
+    }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #dc2626;
+    }
     .nav-links a::after {
       content: '';
       position: absolute;
       left: 0;
       bottom: -8px;
-      width: 0;
+      width: 0%;
       height: 2px;
-      background: #ff8800;
+      background: #dc2626;
       transition: 0.3s;
     }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    /* Language switcher */
+    .lang-switch {
+      background: transparent;
+      border: 1px solid #dc2626;
+      color: #dc2626;
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-family: 'Cairo', sans-serif;
+      margin-left: 15px;
+    }
+    .lang-switch:hover {
+      background: #dc2626;
+      color: white;
+    }
+
     .contact-btn-nav {
-      background: #ff8800;
-      padding: 12px 28px;
-      border-radius: 50px;
+      background: #dc2626;
+      padding: 10px 24px;
+      border-radius: 40px;
       font-weight: 700;
+      transition: 0.3s;
       border: none;
       color: white;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
       font-family: 'Cairo', sans-serif;
-      transition: 0.3s;
+      font-size: 14px;
     }
-    .contact-btn-nav:hover { transform: translateY(-3px); background: #ff9d24; }
+    .contact-btn-nav:hover {
+      transform: translateY(-2px);
+      background: #b91c1c;
+      box-shadow: 0 6px 15px rgba(220, 38, 38, 0.4);
+    }
     .mobile-menu-btn {
       display: none;
-      font-size: 28px;
+      font-size: 26px;
       background: none;
       border: none;
-      color: white;
+      color: #222;
       cursor: pointer;
     }
+
+    /* Mobile nav */
     .mobile-nav {
       position: fixed;
       top: 0;
       right: -100%;
       width: 280px;
       height: 100%;
-      background: rgba(7, 20, 38, 0.98);
+      background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(16px);
       z-index: 1000;
       transition: 0.4s;
       padding: 100px 30px 40px;
-      border-left: 1px solid rgba(255,136,0,0.3);
+      border-left: 1px solid rgba(0,0,0,0.1);
+      box-shadow: -5px 0 20px rgba(0,0,0,0.05);
     }
     .mobile-nav.active { right: 0; }
     .mobile-nav .close-menu {
@@ -155,16 +184,17 @@
       font-size: 28px;
       background: none;
       border: none;
-      color: white;
+      color: #222;
       cursor: pointer;
     }
-    .mobile-nav ul { display: flex; flex-direction: column; gap: 32px; }
-    .mobile-nav ul li a { font-size: 22px; font-weight: 600; }
+    .mobile-nav ul { display: flex; flex-direction: column; gap: 30px; }
+    .mobile-nav ul li a { font-size: 20px; font-weight: 600; color: #222; }
+    .mobile-nav ul li a:hover { color: #dc2626; }
     .mobile-quote-btn {
       width: 100%;
-      background: #ff8800;
-      padding: 14px;
-      border-radius: 50px;
+      background: #dc2626;
+      padding: 12px;
+      border-radius: 40px;
       font-weight: 700;
       border: none;
       color: white;
@@ -177,7 +207,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.5);
       z-index: 998;
       opacity: 0;
       visibility: hidden;
@@ -196,7 +226,7 @@
     /* Hero */
     .services-hero {
       padding: 180px 0 100px;
-      background: linear-gradient(115deg, #0714267a, #07142671), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&auto=format');
+      background: linear-gradient(115deg, rgba(255, 255, 255, 0.438), rgba(255, 255, 255, 0.397)), url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&auto=format');
       background-size: cover;
       background-position: center;
       text-align: center;
@@ -205,13 +235,14 @@
       font-size: 64px;
       font-weight: 900;
       margin-bottom: 20px;
+      color: #111;
     }
-    .services-hero h1 span { color: #ff8800; }
+    .services-hero h1 span { color: #dc2626; }
     .services-hero p {
       font-size: 18px;
       max-width: 700px;
       margin: 0 auto;
-      color: #e0e6f0;
+      color: #000000;
     }
 
     /* Section header */
@@ -220,7 +251,7 @@
       margin: 70px 0 40px;
     }
     .section-header span {
-      color: #ff8800;
+      color: #dc2626;
       letter-spacing: 4px;
       font-size: 14px;
       text-transform: uppercase;
@@ -228,20 +259,21 @@
     .section-header h2 {
       font-size: 44px;
       margin-top: 8px;
+      color: #111;
     }
 
     /* 3 main sections styling */
     .services-block {
-      background: rgba(255,255,255,0.03);
+      background: #f9f9f9;
       border-radius: 48px;
       padding: 50px 40px;
       margin: 60px 0;
-      backdrop-filter: blur(6px);
-      border: 1px solid rgba(255,136,0,0.2);
+      border: 1px solid #eee;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.02);
     }
     .services-block h3 {
       font-size: 36px;
-      color: #ff8800;
+      color: #dc2626;
       margin-bottom: 30px;
       display: flex;
       align-items: center;
@@ -256,39 +288,43 @@
       gap: 30px;
     }
     .service-item {
-      background: rgba(0,0,0,0.3);
+      background: white;
       border-radius: 28px;
       padding: 30px 25px;
       transition: 0.3s;
+      border: 1px solid #e0e0e0;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
     }
     .service-item:hover {
       transform: translateY(-5px);
-      background: rgba(255,136,0,0.1);
+      border-color: #dc2626;
+      box-shadow: 0 15px 25px rgba(0,0,0,0.05);
     }
     .service-item i {
       font-size: 40px;
-      color: #ff8800;
+      color: #dc2626;
       margin-bottom: 20px;
       display: inline-block;
     }
     .service-item h4 {
       font-size: 24px;
       margin-bottom: 15px;
+      color: #111;
     }
     .service-item p {
-      color: #cbd5e1;
+      color: #555;
       line-height: 1.7;
     }
 
-    /* CTA section (simple) */
+    /* CTA section */
     .quote-cta {
-      background: radial-gradient(circle at 20% 30%, rgba(255,136,0,0.15), transparent);
+      background: linear-gradient(-180deg, rgba(29, 189, 205, 0), rgba(29, 189, 205, 0.08));
       padding: 80px 0;
       text-align: center;
     }
-    .quote-cta h2 { font-size: 42px; margin-bottom: 20px; }
+    .quote-cta h2 { font-size: 42px; margin-bottom: 20px; color: #111; }
     .btn-large {
-      background: #ff8800;
+      background: #dc2626;
       padding: 16px 42px;
       border-radius: 50px;
       font-weight: 800;
@@ -300,59 +336,140 @@
       border: none;
       color: white;
     }
-    .btn-large:hover { transform: scale(1.05); background: #ffaa33; }
+    .btn-large:hover { transform: scale(1.05); background: #b91c1c; }
 
     /* Footer */
     .footer {
-      background: #04101f;
-      border-top: 1px solid rgba(255,136,0,0.2);
-      padding: 70px 0 25px;
+      background: #f8f8f8;
+      border-top: 1px solid #eee;
+      padding: 60px 0 25px;
     }
     .footer-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 45px;
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
-    .footer-col h4 { font-size: 22px; margin-bottom: 25px; position: relative; display: inline-block; }
-    .footer-col h4:after { content: ''; position: absolute; left: 0; bottom: -9px; width: 45px; height: 3px; background: #ff8800; border-radius: 4px; }
-    .footer-links a { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 12px; transition: 0.3s; }
-    .footer-links a:hover { color: #ff8800; transform: translateX(5px); }
-    .newsletter-form { display: flex; background: rgba(255,255,255,0.05); border-radius: 60px; overflow: hidden; border: 1px solid rgba(255,136,0,0.3); }
-    .newsletter-form input { flex: 1; background: transparent; border: none; padding: 14px 20px; color: white; }
-    .newsletter-form button { background: #ff8800; border: none; padding: 0 24px; cursor: pointer; color: white; }
-    .social-icons { display: flex; gap: 18px; margin-top: 20px; }
-    .social-icons a { background: rgba(255,136,0,0.15); width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
-    .social-icons a:hover { background: #ff8800; transform: translateY(-5px); }
-    .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.08); color: #8e9cb0; }
+    .footer-col h4 {
+      font-size: 20px;
+      margin-bottom: 22px;
+      position: relative;
+      display: inline-block;
+      color: #111;
+    }
+    .footer-col h4:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 40px;
+      height: 3px;
+      background: #dc2626;
+      border-radius: 4px;
+    }
+    .footer-col p {
+      color: #666;
+      line-height: 1.7;
+      margin: 15px 0;
+    }
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-links a {
+      color: #555;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .footer-links a i { font-size: 12px; color: #dc2626; }
+    .footer-links a:hover {
+      color: #dc2626;
+      transform: translateX(5px);
+    }
+    .newsletter-form {
+      display: flex;
+      background: white;
+      border-radius: 50px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      margin-top: 15px;
+    }
+    .newsletter-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 12px 18px;
+      color: #222;
+      outline: none;
+    }
+    .newsletter-form button {
+      background: #dc2626;
+      border: none;
+      padding: 0 22px;
+      cursor: pointer;
+      color: white;
+      transition: 0.3s;
+    }
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .social-icons a {
+      background: rgba(220, 38, 38, 0.1);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.3s;
+      font-size: 18px;
+      color: #dc2626;
+    }
+    .social-icons a:hover {
+      background: #dc2626;
+      color: white;
+      transform: translateY(-3px);
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 25px;
+      border-top: 1px solid #eee;
+      color: #777;
+      font-size: 13px;
+    }
 
     /* Floating WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 25px;
-      left: 25px;
-      background: #ff8800;
-      width: 60px;
-      height: 60px;
+      right: 25px;
+      background-color: #dc2626;
+      color: white;
       border-radius: 50%;
+      width: 55px;
+      height: 55px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32px;
-      color: white;
+      font-size: 28px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
       z-index: 999;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      text-decoration: none;
     }
-    .whatsapp-float:hover { transform: scale(1.1); background: #e67300; }
+    .whatsapp-float:hover {
+      background-color: #b91c1c;
+      transform: scale(1.1);
+    }
 
     @media (max-width: 992px) {
       .nav-links { display: none; }
       .mobile-menu-btn { display: block; }
-      /* إخفاء زر سطح المكتب عند ظهور زر الموبايل */
-      .contact-btn-nav:not(.mobile-quote-btn) {
-        display: none;
-      }
       .services-hero h1 { font-size: 48px; }
       .section-header h2 { font-size: 34px; }
       .services-block { padding: 30px 20px; }
@@ -361,7 +478,10 @@
     @media (max-width: 576px) {
       .services-hero h1 { font-size: 36px; }
       .service-item { padding: 20px; }
-      .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 15px; left: 15px; }
+      .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 15px; right: 15px; }
+      .logo h2 { font-size: 20px; }
+      .logo-img { width: 45px; height: 45px; }
+      .contact-btn-nav { padding: 6px 16px; font-size: 12px; }
     }
   </style>
 </head>
@@ -369,35 +489,34 @@
 
 <nav class="navbar" id="navbar">
   <div class="container nav-content">
-    <!-- زر طلب عرض سعر (يظهر أولاً على اليمين) -->
-    <button class="contact-btn-nav" id="navContactBtn">Get a Quote</button>
-    
-    <!-- الروابط تظهر في المنتصف -->
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html" class="active">Services</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
-
-    <!-- شعار HUBWAY (يظهر أخيراً على اليسار) -->
     <div class="logo">
-      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY" class="logo-img" onerror="this.src='https://placehold.co/70x70?text=H'">
-      <div><h2>HUBWAY</h2><p>Fast Logistics Solutions</p></div>
+      <img src="./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png" alt="HUBWAY Logo" class="logo-img" onerror="this.src='https://placehold.co/60x60?text=H'">
+      <div>
+        <h2>HUBWAY</h2>
+        <p>حلول لوجستية سريعة</p>
+      </div>
     </div>
-
-    <!-- زر القائمة للجوال يظهر بجانب زر الطلب -->
-    <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    <ul class="nav-links">
+      <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+      <li><a href="services.html" class="active" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+      <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button class="lang-switch" id="langToggle">English</button>
+      <button class="contact-btn-nav" id="navContactBtn" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</button>
+      <button class="mobile-menu-btn" id="menuToggle"><i class="fas fa-bars"></i></button>
+    </div>
   </div>
 </nav>
 
-<!-- Mobile Menu (يحتوي على زر Get a Quote خاص) -->
+<!-- Mobile Menu -->
 <div class="mobile-nav" id="mobileNav">
   <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="services.html" class="active">Services</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><button class="mobile-quote-btn" id="mobileContactBtn">Get a Quote</button></li>
+    <li><a href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+    <li><a href="services.html" class="active" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+    <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+    <li><button class="mobile-quote-btn" id="mobileContactBtn" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</button></li>
   </ul>
 </div>
 <div class="overlay" id="overlay"></div>
@@ -405,80 +524,80 @@
 <!-- Hero Section -->
 <section class="services-hero">
   <div class="container">
-    <h1>خدماتنا <span>اللوجستية</span></h1>
-    <p>نقدم حلول نقل وتخزين وتوزيع متكاملة بأعلى معايير الجودة والموثوقية، مع فريق دعم على مدار الساعة.</p>
+    <h1 id="heroTitle">خدماتنا <span>اللوجستية</span></h1>
+    <p id="heroDesc">نقدم حلول نقل وتخزين وتوزيع متكاملة بأعلى معايير الجودة والموثوقية، مع فريق دعم على مدار الساعة.</p>
   </div>
 </section>
 
 <div class="container">
-  <!-- القسم الأول: النقل، التخزين، التوزيع -->
-  <div class="services-block reveal">
-    <h3><i class="fas fa-truck-moving"></i> النقل، التخزين والتوزيع</h3>
+  <!-- Block 1 -->
+  <div class="services-block reveal" id="block1">
+    <h3 id="block1Title"><i class="fas fa-truck-moving"></i> النقل، التخزين والتوزيع</h3>
     <div class="services-list">
       <div class="service-item">
         <i class="fas fa-truck"></i>
-        <h4>النقل والخدمات اللوجستية</h4>
-        <p>نقل البضائع داخل المدن وبين المناطق، خدمات نقل لصالح الغير، وإدارة عمليات الشحن بكفاءة عالية.</p>
+        <h4 id="item11Title">النقل والخدمات اللوجستية</h4>
+        <p id="item11Desc">نقل البضائع داخل المدن وبين المناطق، خدمات نقل لصالح الغير، وإدارة عمليات الشحن بكفاءة عالية.</p>
       </div>
       <div class="service-item">
         <i class="fas fa-warehouse"></i>
-        <h4>التخزين (Warehousing)</h4>
-        <p>حلول تخزين آمنة ومتكاملة، إدارة المخزون، تجهيز وتغليف البضائع قبل الشحن.</p>
+        <h4 id="item12Title">التخزين (Warehousing)</h4>
+        <p id="item12Desc">حلول تخزين آمنة ومتكاملة، إدارة المخزون، تجهيز وتغليف البضائع قبل الشحن.</p>
       </div>
       <div class="service-item">
         <i class="fas fa-map-marked-alt"></i>
-        <h4>التوزيع والتوصيل</h4>
-        <p>توصيل سريع وموثوق، تغطية جغرافية واسعة داخل المملكة، والالتزام بمواعيد التسليم.</p>
+        <h4 id="item13Title">التوزيع والتوصيل</h4>
+        <p id="item13Desc">توصيل سريع وموثوق، تغطية جغرافية واسعة داخل المملكة، والالتزام بمواعيد التسليم.</p>
       </div>
     </div>
   </div>
 
-  <!-- القسم الثاني: دعم العملاء، التتبع، الحلول المتكاملة -->
-  <div class="services-block reveal">
-    <h3><i class="fas fa-headset"></i> الدعم والتقنية والحلول المتكاملة</h3>
+  <!-- Block 2 -->
+  <div class="services-block reveal" id="block2">
+    <h3 id="block2Title"><i class="fas fa-headset"></i> الدعم والتقنية والحلول المتكاملة</h3>
     <div class="services-list">
       <div class="service-item">
         <i class="fas fa-headset"></i>
-        <h4>خدمة العملاء 24/7</h4>
-        <p>دعم فني وخدمة عملاء على مدار الساعة، متابعة الشحنات والطلبات، حل المشاكل بشكل فوري.</p>
+        <h4 id="item21Title">خدمة العملاء 24/7</h4>
+        <p id="item21Desc">دعم فني وخدمة عملاء على مدار الساعة، متابعة الشحنات والطلبات، حل المشاكل بشكل فوري.</p>
       </div>
       <div class="service-item">
         <i class="fas fa-chart-line"></i>
-        <h4>تتبع الشحنات (Tracking)</h4>
-        <p>متابعة الشحنة لحظة بلحظة، نظام تتبع حديث باستخدام التقنية، شفافية كاملة مع العملاء.</p>
+        <h4 id="item22Title">تتبع الشحنات (Tracking)</h4>
+        <p id="item22Desc">متابعة الشحنة لحظة بلحظة، نظام تتبع حديث باستخدام التقنية، شفافية كاملة مع العملاء.</p>
       </div>
       <div class="service-item">
         <i class="fas fa-cogs"></i>
-        <h4>الحلول اللوجستية المتكاملة</h4>
-        <p>إدارة كاملة لسلسلة الإمداد، حلول مخصصة للشركات، تحسين كفاءة التشغيل وتقليل التكاليف.</p>
+        <h4 id="item23Title">الحلول اللوجستية المتكاملة</h4>
+        <p id="item23Desc">إدارة كاملة لسلسلة الإمداد، حلول مخصصة للشركات، تحسين كفاءة التشغيل وتقليل التكاليف.</p>
       </div>
     </div>
   </div>
 
-  <!-- القسم الثالث: النقل الآمن، الشراكات التجارية -->
-  <div class="services-block reveal">
-    <h3><i class="fas fa-handshake"></i> الأمان والشراكات</h3>
+  <!-- Block 3 -->
+  <div class="services-block reveal" id="block3">
+    <h3 id="block3Title"><i class="fas fa-handshake"></i> الأمان والشراكات</h3>
     <div class="services-list">
       <div class="service-item">
         <i class="fas fa-shield-alt"></i>
-        <h4>النقل الآمن والموثوق</h4>
-        <p>الالتزام بمعايير السلامة والأمان، حماية البضائع أثناء النقل والتخزين، أسطول نقل مجهز وحديث.</p>
+        <h4 id="item31Title">النقل الآمن والموثوق</h4>
+        <p id="item31Desc">الالتزام بمعايير السلامة والأمان، حماية البضائع أثناء النقل والتخزين، أسطول نقل مجهز وحديث.</p>
       </div>
       <div class="service-item">
         <i class="fas fa-handshake"></i>
-        <h4>الشراكات والخدمات التجارية</h4>
-        <p>بناء شراكات طويلة الأمد مع العملاء، دعم الشركات والمتاجر في عمليات التوصيل، حلول لوجستية للمشاريع الكبيرة.</p>
+        <h4 id="item32Title">الشراكات والخدمات التجارية</h4>
+        <p id="item32Desc">بناء شراكات طويلة الأمد مع العملاء، دعم الشركات والمتاجر في عمليات التوصيل، حلول لوجستية للمشاريع الكبيرة.</p>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CTA to Quote -->
+<!-- CTA -->
 <div class="quote-cta" id="quote">
   <div class="container">
-    <h2>هل تحتاج إلى حل لوجستي متكامل؟</h2>
-    <p>تواصل معنا الآن للحصول على عرض سعر فوري ومخصص لاحتياجاتك.</p>
-    <button class="btn-large" id="ctaQuoteBtn">طلب عرض سعر →</button>
+    <h2 id="ctaTitle">هل تحتاج إلى حل لوجستي متكامل؟</h2>
+    <p id="ctaDesc">تواصل معنا الآن للحصول على عرض سعر فوري ومخصص لاحتياجاتك.</p>
+    <button class="btn-large" id="ctaQuoteBtn" data-ar="طلب عرض سعر ←" data-en="Request a Quote →">طلب عرض سعر ←</button>
   </div>
 </div>
 
@@ -487,8 +606,8 @@
   <div class="container">
     <div class="footer-container">
       <div class="footer-col">
-        <h4>HUBWAY</h4>
-        <p>حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p>
+        <h4 id="footerLogoText">HUBWAY</h4>
+        <p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.</p>
         <div class="social-icons">
           <a href="#"><i class="fab fa-facebook-f"></i></a>
           <a href="#"><i class="fab fa-linkedin-in"></i></a>
@@ -497,50 +616,52 @@
         </div>
       </div>
       <div class="footer-col">
-        <h4>روابط سريعة</h4>
+        <h4 id="footerQuickTitle">روابط سريعة</h4>
         <div class="footer-links">
-          <a href="home.html">Home</a>
-          <a href="services.html" class="active">Services</a>
-          <a href="about.html">About Us</a>
-          <a href="#quote">Get a Quote</a>
+          <a href="index.html" id="footerHomeLink" data-ar="الرئيسية" data-en="Home"><i class="fas fa-chevron-right"></i> الرئيسية</a>
+          <a href="services.html" id="footerServicesLink" data-ar="الخدمات" data-en="Services"><i class="fas fa-chevron-right"></i> الخدمات</a>
+          <a href="about.html" id="footerAboutLink" data-ar="عن الشركة" data-en="About Us"><i class="fas fa-chevron-right"></i> عن الشركة</a>
+          <a href="#quote" id="footerQuoteLink" data-ar="طلب عرض سعر" data-en="Get a Quote"><i class="fas fa-chevron-right"></i> طلب عرض سعر</a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>خدماتنا</h4>
+        <h4 id="footerServicesTitle">خدماتنا</h4>
         <div class="footer-links">
-          <a href="#">النقل والتخزين</a>
-          <a href="#">التوزيع السريع</a>
-          <a href="#">الدعم 24/7</a>
-          <a href="#">تتبع الشحنات</a>
+          <a href="#"><i class="fas fa-truck"></i> <span id="footerService1" data-ar="النقل والتخزين" data-en="Transport & Warehousing">النقل والتخزين</span></a>
+          <a href="#"><i class="fas fa-map-marked-alt"></i> <span id="footerService2" data-ar="التوزيع السريع" data-en="Fast Distribution">التوزيع السريع</span></a>
+          <a href="#"><i class="fas fa-headset"></i> <span id="footerService3" data-ar="الدعم 24/7" data-en="24/7 Support">الدعم 24/7</span></a>
+          <a href="#"><i class="fas fa-chart-line"></i> <span id="footerService4" data-ar="تتبع الشحنات" data-en="Shipment Tracking">تتبع الشحنات</span></a>
         </div>
       </div>
       <div class="footer-col">
-        <h4>النشرة البريدية</h4>
-        <p>اشترك لتحصل على آخر العروض والأخبار.</p>
+        <h4 id="newsletterTitle">النشرة البريدية</h4>
+        <p id="newsletterDesc">اشترك لتحصل على آخر العروض والأخبار.</p>
         <div class="newsletter-form">
-          <input type="email" placeholder="بريدك الإلكتروني">
-          <button><i class="fas fa-paper-plane"></i></button>
+          <input type="email" id="newsletterEmail" placeholder="بريدك الإلكتروني">
+          <button id="newsletterBtn"><i class="fas fa-paper-plane"></i></button>
         </div>
       </div>
     </div>
     <div class="copyright">
-      <p>© 2025 HUBWAY Logistics | جميع الحقوق محفوظة</p>
+      <p id="copyrightText">© 2025 HUBWAY Logistics | جميع الحقوق محفوظة | حلول نقل بمعايير عالمية</p>
     </div>
   </div>
 </footer>
 
-<!-- Floating WhatsApp Button -->
+<!-- Floating WhatsApp -->
 <a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" rel="noopener">
   <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
+  // Navbar scroll effect
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 40) navbar.classList.add('scrolled');
     else navbar.classList.remove('scrolled');
   });
 
+  // Mobile menu logic
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const overlay = document.getElementById('overlay');
@@ -551,15 +672,16 @@
   closeMenu.addEventListener('click', closeMenuFunc);
   overlay.addEventListener('click', closeMenuFunc);
 
+  // Buttons scroll
   document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
   document.getElementById('navContactBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
   document.getElementById('ctaQuoteBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
 
   // Newsletter subscription alert
-  const newsletterBtn = document.querySelector('.newsletter-form button');
+  const newsletterBtn = document.getElementById('newsletterBtn');
   if(newsletterBtn) {
     newsletterBtn.addEventListener('click', () => {
-      const inp = document.querySelector('.newsletter-form input');
+      const inp = document.getElementById('newsletterEmail');
       if(inp.value.trim() !== '') {
         alert('📧 تم الاشتراك بنجاح!');
         inp.value = '';
@@ -568,6 +690,176 @@
       }
     });
   }
+
+  // ---------- COMPLETE TRANSLATION ----------
+  let currentLang = 'ar';
+  const langBtn = document.getElementById('langToggle');
+
+  // Arabic texts (default)
+  const arabic = {
+    // Navbar + mobile
+    navHome: 'الرئيسية', navServices: 'الخدمات', navAbout: 'عن الشركة',
+    navContact: 'اتصل بنا', logoSub: 'حلول لوجستية سريعة',
+    // Hero
+    heroTitle: 'خدماتنا <span>اللوجستية</span>',
+    heroDesc: 'نقدم حلول نقل وتخزين وتوزيع متكاملة بأعلى معايير الجودة والموثوقية، مع فريق دعم على مدار الساعة.',
+    // Block titles
+    block1Title: 'النقل، التخزين والتوزيع',
+    block2Title: 'الدعم والتقنية والحلول المتكاملة',
+    block3Title: 'الأمان والشراكات',
+    // Block1 items
+    item11Title: 'النقل والخدمات اللوجستية',
+    item11Desc: 'نقل البضائع داخل المدن وبين المناطق، خدمات نقل لصالح الغير، وإدارة عمليات الشحن بكفاءة عالية.',
+    item12Title: 'التخزين (Warehousing)',
+    item12Desc: 'حلول تخزين آمنة ومتكاملة، إدارة المخزون، تجهيز وتغليف البضائع قبل الشحن.',
+    item13Title: 'التوزيع والتوصيل',
+    item13Desc: 'توصيل سريع وموثوق، تغطية جغرافية واسعة داخل المملكة، والالتزام بمواعيد التسليم.',
+    // Block2 items
+    item21Title: 'خدمة العملاء 24/7',
+    item21Desc: 'دعم فني وخدمة عملاء على مدار الساعة، متابعة الشحنات والطلبات، حل المشاكل بشكل فوري.',
+    item22Title: 'تتبع الشحنات (Tracking)',
+    item22Desc: 'متابعة الشحنة لحظة بلحظة، نظام تتبع حديث باستخدام التقنية، شفافية كاملة مع العملاء.',
+    item23Title: 'الحلول اللوجستية المتكاملة',
+    item23Desc: 'إدارة كاملة لسلسلة الإمداد، حلول مخصصة للشركات، تحسين كفاءة التشغيل وتقليل التكاليف.',
+    // Block3 items
+    item31Title: 'النقل الآمن والموثوق',
+    item31Desc: 'الالتزام بمعايير السلامة والأمان، حماية البضائع أثناء النقل والتخزين، أسطول نقل مجهز وحديث.',
+    item32Title: 'الشراكات والخدمات التجارية',
+    item32Desc: 'بناء شراكات طويلة الأمد مع العملاء، دعم الشركات والمتاجر في عمليات التوصيل، حلول لوجستية للمشاريع الكبيرة.',
+    // CTA
+    ctaTitle: 'هل تحتاج إلى حل لوجستي متكامل؟',
+    ctaDesc: 'تواصل معنا الآن للحصول على عرض سعر فوري ومخصص لاحتياجاتك.',
+    ctaBtn: 'طلب عرض سعر ←',
+    // Footer
+    footerDesc: 'حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.',
+    footerQuickTitle: 'روابط سريعة',
+    footerServicesTitle: 'خدماتنا',
+    footerHome: 'الرئيسية',
+    footerServices: 'الخدمات',
+    footerAbout: 'عن الشركة',
+    footerQuote: 'طلب عرض سعر',
+    footerService1: 'النقل والتخزين',
+    footerService2: 'التوزيع السريع',
+    footerService3: 'الدعم 24/7',
+    footerService4: 'تتبع الشحنات',
+    newsletterTitle: 'النشرة البريدية',
+    newsletterDesc: 'اشترك لتحصل على آخر العروض والأخبار.',
+    copyright: '© 2025 HUBWAY Logistics | جميع الحقوق محفوظة | حلول نقل بمعايير عالمية'
+  };
+
+  const english = {
+    navHome: 'Home', navServices: 'Services', navAbout: 'About',
+    navContact: 'Contact Us', logoSub: 'Fast Logistics Solutions',
+    heroTitle: 'Our <span>Logistics</span> Services',
+    heroDesc: 'We provide integrated transport, warehousing and distribution solutions with the highest quality and reliability standards, and a 24/7 support team.',
+    block1Title: 'Transport, Warehousing & Distribution',
+    block2Title: 'Support, Technology & Integrated Solutions',
+    block3Title: 'Safety & Partnerships',
+    item11Title: 'Transport & Logistics',
+    item11Desc: 'Cargo transport within cities and between regions, third-party transport services, and highly efficient shipping management.',
+    item12Title: 'Warehousing',
+    item12Desc: 'Safe and integrated storage solutions, inventory management, packaging and preparation before shipping.',
+    item13Title: 'Distribution & Delivery',
+    item13Desc: 'Fast and reliable delivery, wide geographic coverage within the Kingdom, and commitment to delivery schedules.',
+    item21Title: '24/7 Customer Service',
+    item21Desc: 'Technical support and customer service around the clock, shipment tracking, and immediate problem solving.',
+    item22Title: 'Shipment Tracking',
+    item22Desc: 'Real-time shipment tracking, modern tracking system using technology, full transparency with customers.',
+    item23Title: 'Integrated Logistics Solutions',
+    item23Desc: 'Complete supply chain management, customized solutions for businesses, improving operational efficiency and reducing costs.',
+    item31Title: 'Safe & Reliable Transport',
+    item31Desc: 'Commitment to safety standards, cargo protection during transport and storage, modern equipped fleet.',
+    item32Title: 'Partnerships & Commercial Services',
+    item32Desc: 'Building long-term partnerships with customers, supporting businesses and stores in delivery operations, logistics solutions for large projects.',
+    ctaTitle: 'Do you need an integrated logistics solution?',
+    ctaDesc: 'Contact us now for an instant and customized quote for your needs.',
+    ctaBtn: 'Request a Quote →',
+    footerDesc: 'Innovative and fast logistics solutions connecting markets with trust. Over 10 years of excellence in transport and storage.',
+    footerQuickTitle: 'Quick Links',
+    footerServicesTitle: 'Our Services',
+    footerHome: 'Home',
+    footerServices: 'Services',
+    footerAbout: 'About Us',
+    footerQuote: 'Get a Quote',
+    footerService1: 'Transport & Warehousing',
+    footerService2: 'Fast Distribution',
+    footerService3: '24/7 Support',
+    footerService4: 'Shipment Tracking',
+    newsletterTitle: 'Newsletter',
+    newsletterDesc: 'Subscribe to get the latest offers and news.',
+    copyright: '© 2025 HUBWAY Logistics | All rights reserved | Global logistics standards'
+  };
+
+  function applyLanguage(lang) {
+    const t = lang === 'ar' ? arabic : english;
+    // Navbar & Mobile
+    document.querySelectorAll('.nav-links a, .mobile-nav ul li a').forEach(link => {
+      const key = link.getAttribute('data-en') ? (lang === 'ar' ? link.getAttribute('data-ar') : link.getAttribute('data-en')) : null;
+      if (key) link.textContent = key;
+    });
+    document.querySelectorAll('.contact-btn-nav, .mobile-quote-btn').forEach(btn => {
+      if (btn.getAttribute('data-ar')) {
+        btn.textContent = lang === 'ar' ? btn.getAttribute('data-ar') : btn.getAttribute('data-en');
+      }
+    });
+    document.querySelector('.logo p').textContent = t.logoSub;
+    // Hero
+    document.getElementById('heroTitle').innerHTML = t.heroTitle;
+    document.getElementById('heroDesc').textContent = t.heroDesc;
+    // Block titles
+    document.getElementById('block1Title').innerHTML = `<i class="fas fa-truck-moving"></i> ${t.block1Title}`;
+    document.getElementById('block2Title').innerHTML = `<i class="fas fa-headset"></i> ${t.block2Title}`;
+    document.getElementById('block3Title').innerHTML = `<i class="fas fa-handshake"></i> ${t.block3Title}`;
+    // Block1 items
+    document.getElementById('item11Title').textContent = t.item11Title;
+    document.getElementById('item11Desc').textContent = t.item11Desc;
+    document.getElementById('item12Title').textContent = t.item12Title;
+    document.getElementById('item12Desc').textContent = t.item12Desc;
+    document.getElementById('item13Title').textContent = t.item13Title;
+    document.getElementById('item13Desc').textContent = t.item13Desc;
+    // Block2 items
+    document.getElementById('item21Title').textContent = t.item21Title;
+    document.getElementById('item21Desc').textContent = t.item21Desc;
+    document.getElementById('item22Title').textContent = t.item22Title;
+    document.getElementById('item22Desc').textContent = t.item22Desc;
+    document.getElementById('item23Title').textContent = t.item23Title;
+    document.getElementById('item23Desc').textContent = t.item23Desc;
+    // Block3 items
+    document.getElementById('item31Title').textContent = t.item31Title;
+    document.getElementById('item31Desc').textContent = t.item31Desc;
+    document.getElementById('item32Title').textContent = t.item32Title;
+    document.getElementById('item32Desc').textContent = t.item32Desc;
+    // CTA
+    document.getElementById('ctaTitle').textContent = t.ctaTitle;
+    document.getElementById('ctaDesc').textContent = t.ctaDesc;
+    document.getElementById('ctaQuoteBtn').textContent = t.ctaBtn;
+    // Footer
+    document.getElementById('footerDesc').textContent = t.footerDesc;
+    document.getElementById('footerQuickTitle').textContent = t.footerQuickTitle;
+    document.getElementById('footerServicesTitle').textContent = t.footerServicesTitle;
+    document.getElementById('footerHomeLink').innerHTML = `<i class="fas fa-chevron-right"></i> ${t.footerHome}`;
+    document.getElementById('footerServicesLink').innerHTML = `<i class="fas fa-chevron-right"></i> ${t.footerServices}`;
+    document.getElementById('footerAboutLink').innerHTML = `<i class="fas fa-chevron-right"></i> ${t.footerAbout}`;
+    document.getElementById('footerQuoteLink').innerHTML = `<i class="fas fa-chevron-right"></i> ${t.footerQuote}`;
+    document.getElementById('footerService1').textContent = t.footerService1;
+    document.getElementById('footerService2').textContent = t.footerService2;
+    document.getElementById('footerService3').textContent = t.footerService3;
+    document.getElementById('footerService4').textContent = t.footerService4;
+    document.getElementById('newsletterTitle').textContent = t.newsletterTitle;
+    document.getElementById('newsletterDesc').textContent = t.newsletterDesc;
+    document.getElementById('copyrightText').textContent = t.copyright;
+    // Placeholder
+    document.getElementById('newsletterEmail').placeholder = lang === 'ar' ? 'بريدك الإلكتروني' : 'Your email address';
+    // Switch button text
+    langBtn.textContent = lang === 'ar' ? 'English' : 'العربية';
+    document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  }
+
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+    applyLanguage(currentLang);
+  });
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
