@@ -428,8 +428,57 @@
       gap: 45px;
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.03);
     }
-    .contact-info-item { display: flex; gap: 18px; margin-bottom: 25px; align-items: center; }
-    .contact-info-item i { width: 45px; height: 45px; background: rgba(220, 38, 38, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #dc2626; }
+    .contact-info-item { 
+      display: flex; 
+      gap: 18px; 
+      margin-bottom: 25px; 
+      align-items: center; 
+    }
+    .contact-info-item i { 
+      width: 45px; 
+      height: 45px; 
+      background: rgba(220, 38, 38, 0.1); 
+      border-radius: 50%; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      font-size: 20px; 
+      color: #dc2626; 
+    }
+    .contact-info-item a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+    .contact-info-item a:hover {
+      color: #dc2626;
+    }
+    .call-link {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+    .call-link i {
+      margin: 0;
+    }
+    .call-link:hover i {
+      background: #dc2626;
+      color: white;
+      transition: 0.2s;
+    }
+    .call-link:hover .call-text {
+      color: #dc2626;
+    }
+    .call-text {
+      transition: 0.2s;
+    }
     .quote-right form { display: flex; flex-direction: column; gap: 20px; }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
@@ -662,9 +711,29 @@
       <div class="quote-left">
         <h3 id="quoteTitle"><i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟</h3>
         <p id="quoteDesc">احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.</p>
-        <div class="contact-info-item"><i class="fas fa-phone-alt"></i><div><strong id="hotlineLabel">الخط الساخن</strong><br>+966 0507053972</div></div>
-        <div class="contact-info-item"><i class="fas fa-envelope"></i><div><strong id="emailLabel">البريد الإلكتروني</strong><br>info@hubway.sa</div></div>
-        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><strong id="addressLabel">المقر الرئيسي</strong><br>الرياض، المملكة العربية السعودية</div></div>
+        
+        <!-- Click-to-call phone item: whole line clickable -->
+        <div class="contact-info-item">
+          <a href="tel:+966507053972" class="call-link" style="display: flex; align-items: center; gap: 18px; width: 100%; text-decoration: none; color: inherit;">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <strong id="hotlineLabel">الخط الساخن</strong><br>
+              <span class="call-text" style="direction: ltr; display: inline-block;">+966 0507053972</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="contact-info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong id="emailLabel">البريد الإلكتروني</strong><br>
+            <a href="mailto:info@hubway.sa" style="text-decoration: none; color: inherit;">info@hubway.sa</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div><strong id="addressLabel">المقر الرئيسي</strong><br>الرياض، المملكة العربية السعودية</div>
+        </div>
       </div>
       <div class="quote-right">
         <form id="quickQuoteForm">
@@ -702,7 +771,7 @@
 </footer>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/9660507053972" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/966507053972" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -752,19 +821,6 @@
         return;
       }
       
-      // Prepare email body
-      const emailBody = `
-        <strong>طلب خدمة جديد من صفحة "عن الشركة" - HUBWAY</strong><br><br>
-        <strong>الاسم:</strong> ${name}<br>
-        <strong>البريد الإلكتروني:</strong> ${email}<br>
-        <strong>رقم الجوال:</strong> ${phone || 'غير مدخل'}<br>
-        <strong>نوع الخدمة:</strong> ${service}<br>
-        <strong>الرسالة:</strong> ${message || 'لا توجد رسالة إضافية'}<br>
-        <br>
-        تم الإرسال عبر نموذج طلب السعر.
-      `;
-      
-      // Use FormSubmit.co free endpoint to send to info@hubway.sa
       const submitUrl = 'https://formsubmit.co/ajax/info@hubway.sa';
       
       try {

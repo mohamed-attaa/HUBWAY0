@@ -444,7 +444,15 @@
       gap: 18px;
       margin-bottom: 22px;
     }
-    .contact-info-item i {
+    .contact-info-item a.call-link {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+    }
+    .contact-info-item a.call-link i {
       width: 45px;
       height: 45px;
       background: rgba(220, 38, 38, 0.1);
@@ -454,13 +462,25 @@
       justify-content: center;
       font-size: 20px;
       color: #dc2626;
+      transition: 0.2s;
+      margin: 0;
     }
-    .contact-info-item a {
+    .contact-info-item a.call-link:hover i {
+      background: #dc2626;
+      color: white;
+    }
+    .contact-info-item a.call-link:hover .call-text {
+      color: #dc2626;
+    }
+    .call-text {
+      transition: 0.2s;
+    }
+    .contact-info-item a:not(.call-link) {
       text-decoration: none;
       color: inherit;
       transition: 0.2s;
     }
-    .contact-info-item a:hover {
+    .contact-info-item a:not(.call-link):hover {
       color: #dc2626;
     }
     .quote-right form {
@@ -679,7 +699,7 @@
       .section-title h2 { font-size: 28px; }
       .quote-wrapper { padding: 20px; }
       .contact-info-item { gap: 12px; }
-      .contact-info-item i { width: 38px; height: 38px; font-size: 16px; }
+      .contact-info-item a.call-link i { width: 38px; height: 38px; font-size: 16px; }
     }
 
     /* Fix for very small devices */
@@ -784,13 +804,18 @@
       <div class="quote-left">
         <h3 id="quoteTitle"><i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟</h3>
         <p id="quoteDesc">احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.</p>
+        
+        <!-- Click-to-call phone item: whole line clickable -->
         <div class="contact-info-item">
-          <i class="fas fa-phone-alt"></i>
-          <div>
-            <strong id="hotlineLabel">الخط الساخن</strong><br>
-            <a href="tel:+966507053972" style="text-decoration: none; color: inherit; direction: ltr; display: inline-block;">+966 0507053972</a>
-          </div>
+          <a href="tel:+966507053972" class="call-link" style="display: flex; align-items: center; gap: 18px; width: 100%; text-decoration: none; color: inherit;">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <strong id="hotlineLabel">الخط الساخن</strong><br>
+              <span class="call-text" style="direction: ltr; display: inline-block;">+966 0507053972</span>
+            </div>
+          </a>
         </div>
+
         <div class="contact-info-item">
           <i class="fas fa-envelope"></i>
           <div>
@@ -923,18 +948,6 @@
         alert(currentLang === 'ar' ? 'الرجاء ملء الاسم والبريد الإلكتروني' : 'Please fill in name and email');
         return;
       }
-      
-      // Prepare email body
-      const emailBody = `
-        <strong>طلب خدمة جديد من موقع HUBWAY</strong><br><br>
-        <strong>الاسم:</strong> ${name}<br>
-        <strong>البريد الإلكتروني:</strong> ${email}<br>
-        <strong>رقم الجوال:</strong> ${phone || 'غير مدخل'}<br>
-        <strong>نوع الخدمة:</strong> ${service}<br>
-        <strong>الرسالة:</strong> ${message || 'لا توجد رسالة إضافية'}<br>
-        <br>
-        تم الإرسال عبر نموذج طلب السعر.
-      `;
       
       // Use FormSubmit.co free endpoint to send to info@hubway.sa
       const submitUrl = 'https://formsubmit.co/ajax/info@hubway.sa';
