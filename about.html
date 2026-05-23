@@ -213,7 +213,7 @@
     /* about hero */
     .about-hero {
       padding: 180px 0 100px;
-      background: linear-gradient(115deg, rgba(255, 255, 255, 0.548), rgba(255, 255, 255, 0.596)), url('./img/Gemini_Generated_Image_cxbac8cxbac8cxba.png');
+      background: linear-gradient(115deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.329)), url('./img/Gemini_Generated_Image_4rxpsp4rxpsp4rxp.png');
       background-size: cover;
       background-position: center;
     }
@@ -225,12 +225,12 @@
       font-weight: 900;
       line-height: 1.1;
       margin-bottom: 25px;
-      color: #111;
+      color: #fcfcfc;
     }
-    .about-hero h1 span { color: #dc2626; }
+    .about-hero h1 span { color: #ffffff; }
     .about-hero p {
       font-size: 18px;
-      color: #c20000;
+      color: #ffffff;
       line-height: 1.7;
       margin-bottom: 35px;
     }
@@ -241,9 +241,9 @@
     }
     .hero-stats div h3 {
       font-size: 38px;
-      color: #dc2626;
+      color: #ffffff;
     }
-    .hero-stats div p { color: #bd0808; }
+    .hero-stats div p { color: #f5f5f5; }
 
     /* mission vision row */
     .mission-vision {
@@ -702,7 +702,7 @@
 </footer>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/966500000000" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/0507053972" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -729,13 +729,75 @@
   document.getElementById('navContactBtn')?.addEventListener('click', () => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }));
   document.getElementById('mobileContactBtn')?.addEventListener('click', () => { closeMenuFunc(); document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' }); });
 
-  // Form submission
-  const quoteForm = document.getElementById('quickQuoteForm');
-  if(quoteForm) quoteForm.addEventListener('submit', (e) => { e.preventDefault(); alert('✅ شكراً! سيتواصل معكم فريق HUBWAY خلال 24 ساعة.'); quoteForm.reset(); });
-
-  // Newsletter
+  // Newsletter subscription
   const newsletterBtn = document.querySelector('.newsletter-form button');
   if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert('📧 تم الاشتراك بنجاح!'); inp.value=''; } else alert('الرجاء إدخال بريد إلكتروني'); });
+
+  // ----- EMAIL SUBMISSION (FormSubmit.co) -----
+  const quoteForm = document.getElementById('quickQuoteForm');
+  if(quoteForm) {
+    quoteForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Collect form data
+      const name = document.getElementById('nameInput').value.trim();
+      const email = document.getElementById('emailInput').value.trim();
+      const phone = document.getElementById('phoneInput').value.trim();
+      const serviceSelect = document.getElementById('serviceSelect');
+      const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
+      const message = document.getElementById('messageInput').value.trim();
+      
+      if(!name || !email) {
+        alert(currentLang === 'ar' ? 'الرجاء ملء الاسم والبريد الإلكتروني' : 'Please fill in name and email');
+        return;
+      }
+      
+      // Prepare email body
+      const emailBody = `
+        <strong>طلب خدمة جديد من صفحة "عن الشركة" - HUBWAY</strong><br><br>
+        <strong>الاسم:</strong> ${name}<br>
+        <strong>البريد الإلكتروني:</strong> ${email}<br>
+        <strong>رقم الجوال:</strong> ${phone || 'غير مدخل'}<br>
+        <strong>نوع الخدمة:</strong> ${service}<br>
+        <strong>الرسالة:</strong> ${message || 'لا توجد رسالة إضافية'}<br>
+        <br>
+        تم الإرسال عبر نموذج طلب السعر.
+      `;
+      
+      // Use FormSubmit.co free endpoint to send to info@hubway.sa
+      const submitUrl = 'https://formsubmit.co/ajax/info@hubway.sa';
+      
+      try {
+        const response = await fetch(submitUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            phone: phone,
+            service: service,
+            message: message,
+            _subject: `طلب خدمة جديد من ${name}`,
+            _template: 'table',
+            _captcha: 'false'
+          })
+        });
+        
+        if(response.ok) {
+          alert(currentLang === 'ar' ? '✅ تم إرسال طلبك بنجاح! سيتواصل معك فريق HUBWAY خلال 24 ساعة.' : '✅ Your request has been sent successfully! HUBWAY team will contact you within 24 hours.');
+          quoteForm.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch(error) {
+        console.error('Error sending email:', error);
+        alert(currentLang === 'ar' ? '❌ حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.' : '❌ An error occurred. Please try again or contact us directly.');
+      }
+    });
+  }
 
   // Full Translation Object
   const translations = {
@@ -1053,6 +1115,7 @@
     const newLang = currentLang === 'ar' ? 'en' : 'ar';
     applyLanguage(newLang);
   });
+  applyLanguage('ar');
 
   // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
