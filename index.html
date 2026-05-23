@@ -248,7 +248,7 @@
       background: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=2070&auto=format');
       background-size: cover;
       background-position: center;
-      opacity: 0.2;
+      opacity: 0.25;
       z-index: 0;
     }
     .hero-content {
@@ -277,6 +277,7 @@
       max-width: 550px;
       margin-bottom: 35px;
       font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     .hero-buttons {
       display: flex;
@@ -310,10 +311,10 @@
       color: #fffcfc;
     }
     .secondary-btn:hover {
-      background: rgba(220, 38, 38, 0.05);
+      background: rgba(220, 38, 38, 0.15);
       transform: translateY(-3px);
       border-color: #b91c1c;
-      color: #b91c1c;
+      color: #ffffff;
     }
     .stats {
       display: flex;
@@ -326,11 +327,13 @@
       color: #dc2626;
       margin-bottom: 5px;
       font-weight: 800;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
     .stats p { 
-      color: #444; 
+      color: #f0f0f0; 
       font-weight: 600;
       font-size: 14px;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.3);
     }
     .hero-right img {
       width: 100%;
@@ -450,6 +453,14 @@
       align-items: center;
       justify-content: center;
       font-size: 20px;
+      color: #dc2626;
+    }
+    .contact-info-item a {
+      text-decoration: none;
+      color: inherit;
+      transition: 0.2s;
+    }
+    .contact-info-item a:hover {
       color: #dc2626;
     }
     .quote-right form {
@@ -773,9 +784,24 @@
       <div class="quote-left">
         <h3 id="quoteTitle"><i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟</h3>
         <p id="quoteDesc">احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.</p>
-        <div class="contact-info-item"><i class="fas fa-phone-alt"></i><div><strong id="hotlineLabel">الخط الساخن</strong><br>+966 0507053972</div></div>
-        <div class="contact-info-item"><i class="fas fa-envelope"></i><div><strong id="emailLabel">البريد الإلكتروني</strong><br>info@hubway.sa</div></div>
-        <div class="contact-info-item"><i class="fas fa-map-marker-alt"></i><div><strong id="addressLabel">المقر الرئيسي</strong><br>الرياض، المملكة العربية السعودية</div></div>
+        <div class="contact-info-item">
+          <i class="fas fa-phone-alt"></i>
+          <div>
+            <strong id="hotlineLabel">الخط الساخن</strong><br>
+            <a href="tel:+966507053972" style="text-decoration: none; color: inherit; direction: ltr; display: inline-block;">+966 0507053972</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <strong id="emailLabel">البريد الإلكتروني</strong><br>
+            <a href="mailto:info@hubway.sa" style="text-decoration: none; color: inherit;">info@hubway.sa</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div><strong id="addressLabel">المقر الرئيسي</strong><br>الرياض، المملكة العربية السعودية</div>
+        </div>
       </div>
       <div class="quote-right">
         <form id="quickQuoteForm">
@@ -846,7 +872,7 @@
 </footer>
 
 <!-- Floating WhatsApp -->
-<a href="https://wa.me/9660507053972" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/966507053972" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
   <i class="fab fa-whatsapp"></i>
 </a>
 
