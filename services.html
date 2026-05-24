@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>HUBWAY | خدماتنا اللوجستية</title>
+  <title>HUBWAY | خدماتنا اللوجستية - تتبع الشحنة</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -316,6 +316,46 @@
       line-height: 1.7;
     }
 
+    /* تتبع الشحنة - section tracking custom */
+    .tracking-section {
+      text-align: center;
+      background: linear-gradient(125deg, #ffffff, #fef2f2);
+      border: 1px solid #ffe2e2;
+    }
+    .tracking-section h3 {
+      justify-content: center;
+    }
+    .tracking-desc {
+      font-size: 18px;
+      max-width: 700px;
+      margin: 0 auto 30px auto;
+      color: #333;
+      line-height: 1.8;
+    }
+    .tracking-btn {
+      background: #dc2626;
+      padding: 14px 40px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: 0.3s;
+      cursor: pointer;
+      border: none;
+      color: white;
+      box-shadow: 0 8px 20px rgba(220,38,38,0.3);
+    }
+    .tracking-btn i {
+      font-size: 20px;
+    }
+    .tracking-btn:hover {
+      transform: translateY(-3px);
+      background: #b91c1c;
+      box-shadow: 0 12px 24px rgba(220,38,38,0.4);
+    }
+
     /* CTA section */
     .quote-cta {
       background: linear-gradient(-180deg, rgba(29, 189, 205, 0), rgba(29, 189, 205, 0.08));
@@ -474,6 +514,7 @@
       .section-header h2 { font-size: 34px; }
       .services-block { padding: 30px 20px; }
       .services-block h3 { font-size: 28px; }
+      .tracking-desc { font-size: 16px; }
     }
     @media (max-width: 576px) {
       .services-hero h1 { font-size: 36px; }
@@ -482,6 +523,7 @@
       .logo h2 { font-size: 20px; }
       .logo-img { width: 45px; height: 45px; }
       .contact-btn-nav { padding: 6px 16px; font-size: 12px; }
+      .tracking-btn { padding: 12px 28px; font-size: 16px; }
     }
   </style>
 </head>
@@ -590,6 +632,18 @@
       </div>
     </div>
   </div>
+
+  <!-- ========== NEW TRACKING SHIPMENT SECTION ========== -->
+  <div class="services-block tracking-section reveal" id="trackingSection">
+    <h3 id="trackingTitle"><i class="fas fa-map-marker-alt"></i> تتبع الشحنة</h3>
+    <p class="tracking-desc" id="trackingDesc">
+      أدخل رقم التتبع الخاص بك وتعرف على حالة شحنتك في أي وقت. نظام تتبع متطور يمنحك الشفافية الكاملة وراحة البال.
+    </p>
+    <a href="Track Shipment.html" class="tracking-btn" id="trackingBtn">
+      <i class="fas fa-search-location"></i> 
+      <span id="trackingBtnText">تتبع شحنتك الآن →</span>
+    </a>
+  </div>
 </div>
 
 <!-- CTA -->
@@ -609,35 +663,29 @@
         <h4 id="footerLogoText">HUBWAY</h4>
         <p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.</p>
         <div class="social-icons">
-        <div class="social-icons">
-  <a href="#"><i class="fab fa-facebook-f"></i></a>
-  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-  <a href="#"><i class="fab fa-instagram"></i></a>
-
-  <!-- تويتر -->
-  <a href="#"><i class="fab fa-twitter"></i></a>
-
-  <!-- سناب شات -->
-  <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
-</div>
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
         </div>
       </div>
       <div class="footer-col">
         <h4 id="footerQuickTitle">روابط سريعة</h4>
         <div class="footer-links">
-          <a href="index.html" id="footerHomeLink" data-ar="الرئيسية" data-en="Home"><i class="fas fa-chevron-right"></i> الرئيسية</a>
-          <a href="services.html" id="footerServicesLink" data-ar="الخدمات" data-en="Services"><i class="fas fa-chevron-right"></i> الخدمات</a>
-          <a href="about.html" id="footerAboutLink" data-ar="عن الشركة" data-en="About Us"><i class="fas fa-chevron-right"></i> عن الشركة</a>
-          <a href="#quote" id="footerQuoteLink" data-ar="طلب عرض سعر" data-en="Get a Quote"><i class="fas fa-chevron-right"></i> طلب عرض سعر</a>
+          <a href="index.html" id="footerHomeLink"><i class="fas fa-chevron-right"></i> الرئيسية</a>
+          <a href="services.html" id="footerServicesLink"><i class="fas fa-chevron-right"></i> الخدمات</a>
+          <a href="about.html" id="footerAboutLink"><i class="fas fa-chevron-right"></i> عن الشركة</a>
+          <a href="#quote" id="footerQuoteLink"><i class="fas fa-chevron-right"></i> طلب عرض سعر</a>
         </div>
       </div>
       <div class="footer-col">
         <h4 id="footerServicesTitle">خدماتنا</h4>
         <div class="footer-links">
-          <a href="#"><i class="fas fa-truck"></i> <span id="footerService1" data-ar="النقل والتخزين" data-en="Transport & Warehousing">النقل والتخزين</span></a>
-          <a href="#"><i class="fas fa-map-marked-alt"></i> <span id="footerService2" data-ar="التوزيع السريع" data-en="Fast Distribution">التوزيع السريع</span></a>
-          <a href="#"><i class="fas fa-headset"></i> <span id="footerService3" data-ar="الدعم 24/7" data-en="24/7 Support">الدعم 24/7</span></a>
-          <a href="#"><i class="fas fa-chart-line"></i> <span id="footerService4" data-ar="تتبع الشحنات" data-en="Shipment Tracking">تتبع الشحنات</span></a>
+          <a href="#"><i class="fas fa-truck"></i> <span id="footerService1">النقل والتخزين</span></a>
+          <a href="#"><i class="fas fa-map-marked-alt"></i> <span id="footerService2">التوزيع السريع</span></a>
+          <a href="#"><i class="fas fa-headset"></i> <span id="footerService3">الدعم 24/7</span></a>
+          <a href="#"><i class="fas fa-chart-line"></i> <span id="footerService4">تتبع الشحنات</span></a>
         </div>
       </div>
       <div class="footer-col">
@@ -672,11 +720,11 @@
   const menuToggle = document.getElementById('menuToggle');
   const mobileNav = document.getElementById('mobileNav');
   const overlay = document.getElementById('overlay');
-  const closeMenu = document.getElementById('closeMenu');
+  const closeMenuBtn = document.getElementById('closeMenu');
   function openMenu() { mobileNav.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
   function closeMenuFunc() { mobileNav.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
   menuToggle.addEventListener('click', openMenu);
-  closeMenu.addEventListener('click', closeMenuFunc);
+  closeMenuBtn.addEventListener('click', closeMenuFunc);
   overlay.addEventListener('click', closeMenuFunc);
 
   // Buttons scroll
@@ -698,46 +746,43 @@
     });
   }
 
-  // ---------- COMPLETE TRANSLATION ----------
+  // ---------- COMPLETE TRANSLATION (including new tracking section) ----------
   let currentLang = 'ar';
   const langBtn = document.getElementById('langToggle');
 
   // Arabic texts (default)
   const arabic = {
-    // Navbar + mobile
     navHome: 'الرئيسية', navServices: 'الخدمات', navAbout: 'عن الشركة',
     navContact: 'اتصل بنا', logoSub: 'حلول لوجستية سريعة',
-    // Hero
     heroTitle: 'خدماتنا <span>اللوجستية</span>',
     heroDesc: 'نقدم حلول نقل وتخزين وتوزيع متكاملة بأعلى معايير الجودة والموثوقية، مع فريق دعم على مدار الساعة.',
-    // Block titles
     block1Title: 'النقل، التخزين والتوزيع',
     block2Title: 'الدعم والتقنية والحلول المتكاملة',
     block3Title: 'الأمان والشراكات',
-    // Block1 items
     item11Title: 'النقل والخدمات اللوجستية',
     item11Desc: 'نقل البضائع داخل المدن وبين المناطق، خدمات نقل لصالح الغير، وإدارة عمليات الشحن بكفاءة عالية.',
     item12Title: 'التخزين (Warehousing)',
     item12Desc: 'حلول تخزين آمنة ومتكاملة، إدارة المخزون، تجهيز وتغليف البضائع قبل الشحن.',
     item13Title: 'التوزيع والتوصيل',
     item13Desc: 'توصيل سريع وموثوق، تغطية جغرافية واسعة داخل المملكة، والالتزام بمواعيد التسليم.',
-    // Block2 items
     item21Title: 'خدمة العملاء 24/7',
     item21Desc: 'دعم فني وخدمة عملاء على مدار الساعة، متابعة الشحنات والطلبات، حل المشاكل بشكل فوري.',
     item22Title: 'تتبع الشحنات (Tracking)',
     item22Desc: 'متابعة الشحنة لحظة بلحظة، نظام تتبع حديث باستخدام التقنية، شفافية كاملة مع العملاء.',
     item23Title: 'الحلول اللوجستية المتكاملة',
     item23Desc: 'إدارة كاملة لسلسلة الإمداد، حلول مخصصة للشركات، تحسين كفاءة التشغيل وتقليل التكاليف.',
-    // Block3 items
     item31Title: 'النقل الآمن والموثوق',
     item31Desc: 'الالتزام بمعايير السلامة والأمان، حماية البضائع أثناء النقل والتخزين، أسطول نقل مجهز وحديث.',
     item32Title: 'الشراكات والخدمات التجارية',
     item32Desc: 'بناء شراكات طويلة الأمد مع العملاء، دعم الشركات والمتاجر في عمليات التوصيل، حلول لوجستية للمشاريع الكبيرة.',
+    // Tracking Section
+    trackingTitle: 'تتبع الشحنة',
+    trackingDesc: 'أدخل رقم التتبع الخاص بك وتعرف على حالة شحنتك في أي وقت. نظام تتبع متطور يمنحك الشفافية الكاملة وراحة البال.',
+    trackingBtnText: 'تتبع شحنتك الآن →',
     // CTA
     ctaTitle: 'هل تحتاج إلى حل لوجستي متكامل؟',
     ctaDesc: 'تواصل معنا الآن للحصول على عرض سعر فوري ومخصص لاحتياجاتك.',
     ctaBtn: 'طلب عرض سعر ←',
-    // Footer
     footerDesc: 'حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.',
     footerQuickTitle: 'روابط سريعة',
     footerServicesTitle: 'خدماتنا',
@@ -778,6 +823,10 @@
     item31Desc: 'Commitment to safety standards, cargo protection during transport and storage, modern equipped fleet.',
     item32Title: 'Partnerships & Commercial Services',
     item32Desc: 'Building long-term partnerships with customers, supporting businesses and stores in delivery operations, logistics solutions for large projects.',
+    // Tracking Section English
+    trackingTitle: 'Track Your Shipment',
+    trackingDesc: 'Enter your tracking number and know your shipment status anytime. Advanced tracking system gives you full transparency and peace of mind.',
+    trackingBtnText: 'Track Now →',
     ctaTitle: 'Do you need an integrated logistics solution?',
     ctaDesc: 'Contact us now for an instant and customized quote for your needs.',
     ctaBtn: 'Request a Quote →',
@@ -836,6 +885,11 @@
     document.getElementById('item31Desc').textContent = t.item31Desc;
     document.getElementById('item32Title').textContent = t.item32Title;
     document.getElementById('item32Desc').textContent = t.item32Desc;
+    // Tracking Section
+    document.getElementById('trackingTitle').innerHTML = `<i class="fas fa-map-marker-alt"></i> ${t.trackingTitle}`;
+    document.getElementById('trackingDesc').textContent = t.trackingDesc;
+    const trackingBtnSpan = document.getElementById('trackingBtnText');
+    if(trackingBtnSpan) trackingBtnSpan.textContent = t.trackingBtnText;
     // CTA
     document.getElementById('ctaTitle').textContent = t.ctaTitle;
     document.getElementById('ctaDesc').textContent = t.ctaDesc;
