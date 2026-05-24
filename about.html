@@ -520,7 +520,7 @@
     .newsletter-form { display: flex; background: white; border-radius: 50px; overflow: hidden; border: 1px solid #ddd; margin-top: 15px; }
     .newsletter-form input { flex: 1; background: transparent; border: none; padding: 12px 18px; color: #222; outline: none; }
     .newsletter-form button { background: #dc2626; border: none; padding: 0 22px; cursor: pointer; color: white; transition: 0.3s; }
-    .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+    .social-icons { display: flex; gap: 15px; margin-top: 20px; flex-wrap: wrap; }
     .social-icons a { background: rgba(220, 38, 38, 0.1); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.3s; font-size: 18px; color: #dc2626; }
     .social-icons a:hover { background: #dc2626; color: white; transform: translateY(-3px); }
     .copyright { text-align: center; padding-top: 25px; border-top: 1px solid #eee; color: #777; font-size: 13px; }
@@ -761,7 +761,7 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-container">
-      <div class="footer-col"><h4>HUBWAY</h4><p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-x-twitter"></i></a></div></div>
+      <div class="footer-col"><h4>HUBWAY</h4><p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة.</p><div class="social-icons"><a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a><a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a><a href="#" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" target="_blank"><i class="fab fa-twitter"></i></a><a href="#" target="_blank"><i class="fab fa-snapchat-ghost"></i></a></div></div>
       <div class="footer-col"><h4 id="quickLinksTitle">روابط سريعة</h4><div class="footer-links"><a href="index.html" id="footerHome" data-ar="الرئيسية" data-en="Home">الرئيسية</a><a href="services.html" id="footerServices" data-ar="الخدمات" data-en="Services">الخدمات</a><a href="about.html" id="footerAbout" data-ar="عن الشركة" data-en="About Us">عن الشركة</a><a href="#quote" id="footerQuote" data-ar="طلب عرض سعر" data-en="Get a Quote">طلب عرض سعر</a></div></div>
       <div class="footer-col"><h4 id="servicesListTitle">خدماتنا</h4><div class="footer-links"><a href="#" id="footerService1" data-ar="النقل البري" data-en="Ground Freight">النقل البري</a><a href="#" id="footerService2" data-ar="الشحن البحري" data-en="Ocean Freight">الشحن البحري</a><a href="#" id="footerService3" data-ar="التخزين اللوجستي" data-en="3PL Warehousing">التخزين اللوجستي</a></div></div>
       <div class="footer-col"><h4 id="newsletterTitle">النشرة البريدية</h4><p id="newsletterDesc">اشترك لتحصل على آخر العروض</p><div class="newsletter-form"><input type="email" id="newsletterEmail" placeholder="بريدك الإلكتروني"><button id="newsletterBtn" data-ar="اشتراك" data-en="Subscribe"><i class="fas fa-paper-plane"></i></button></div></div>
