@@ -269,7 +269,6 @@
       margin-bottom: 20px;
       color: #ffffff;
     }
-    .hero-left h1 span { color: #ffffff; }
     .hero-left p {
       font-size: 22px;
       line-height: 1.7;
@@ -702,7 +701,6 @@
       .contact-info-item a.call-link i { width: 38px; height: 38px; font-size: 16px; }
     }
 
-    /* Fix for very small devices */
     @media (max-width: 400px) {
       .hero-content { padding-top: 120px; }
       .hero-buttons { flex-direction: column; align-items: center; }
@@ -723,9 +721,10 @@
       </div>
     </div>
     <ul class="nav-links">
-      <li><a href="index.html" class="active" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
-      <li><a href="services.html" data-en="Services" data-ar="الخدمات">الخدمات</a></li>
-      <li><a href="about.html" data-en="About" data-ar="عن الشركة">عن الشركة</a></li>
+      <li><a href="index.html" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+      <li><a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+      <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+      <li><a href="Track Shipment.html" data-ar="تتبع الشحنة" data-en="Track Shipment">تتبع الشحنة</a></li>
     </ul>
     <div style="display: flex; align-items: center; gap: 12px;">
       <button class="lang-switch" id="langToggle">English</button>
@@ -739,9 +738,10 @@
 <div class="mobile-nav" id="mobileNav">
   <button class="close-menu" id="closeMenu"><i class="fas fa-times"></i></button>
   <ul>
-    <li><a href="index.html" class="active" data-en="Home" data-ar="الرئيسية">الرئيسية</a></li>
-    <li><a href="services.html" data-en="Services" data-ar="الخدمات">الخدمات</a></li>
-    <li><a href="about.html" data-en="About" data-ar="عن الشركة">عن الشركة</a></li>
+    <li><a href="index.html" class="active" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+    <li><a href="services.html" data-ar="الخدمات" data-en="Services">الخدمات</a></li>
+    <li><a href="about.html" data-ar="عن الشركة" data-en="About">عن الشركة</a></li>
+    <li><a href="Track Shipment.html" data-ar="تتبع الشحنة" data-en="Track Shipment">تتبع الشحنة</a></li>
     <li><button class="mobile-quote-btn" id="mobileContactBtn" data-ar="اتصل بنا" data-en="Contact Us">اتصل بنا</button></li>
   </ul>
 </div>
@@ -758,10 +758,13 @@
         <button class="primary-btn" id="heroQuoteBtn" data-ar="طلب عرض سعر ←" data-en="Request a Quote →">طلب عرض سعر ←</button>
         <button class="secondary-btn" id="heroExploreBtn" data-ar="استكشف الخدمات ↓" data-en="Explore Services ↓">استكشف الخدمات ↓</button>
       </div>
-      
+      <div class="stats">
+        <div><h3 id="stat1Num">150+</h3><p id="stat1">أسطول شاحنات</p></div>
+        <div><h3 id="stat2Num">98%</h3><p id="stat2">تسليم في الوقت</p></div>
+        <div><h3 id="stat3Num">24/7</h3><p id="stat3">دعم العملاء</p></div>
+      </div>
     </div>
-    <div class="hero-right">
-    </div>
+    <div class="hero-right"></div>
   </div>
 </section>
 
@@ -804,8 +807,6 @@
       <div class="quote-left">
         <h3 id="quoteTitle"><i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟</h3>
         <p id="quoteDesc">احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.</p>
-        
-        <!-- Click-to-call phone item: whole line clickable -->
         <div class="contact-info-item">
           <a href="tel:+966507053972" class="call-link" style="display: flex; align-items: center; gap: 18px; width: 100%; text-decoration: none; color: inherit;">
             <i class="fas fa-phone-alt"></i>
@@ -815,7 +816,6 @@
             </div>
           </a>
         </div>
-
         <div class="contact-info-item">
           <i class="fas fa-envelope"></i>
           <div>
@@ -857,17 +857,13 @@
       <div class="footer-col">
         <h4>HUBWAY</h4>
         <p id="footerDesc">حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.</p>
-       <div class="social-icons">
-  <a href="#"><i class="fab fa-facebook-f"></i></a>
-  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-  <a href="#"><i class="fab fa-instagram"></i></a>
-
-  <!-- تويتر -->
-  <a href="#"><i class="fab fa-twitter"></i></a>
-
-  <!-- سناب شات -->
-  <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
-</div>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-snapchat-ghost"></i></a>
+        </div>
       </div>
       <div class="footer-col">
         <h4 id="quickLinksTitle">روابط سريعة</h4>
@@ -875,6 +871,7 @@
           <a href="#" id="footerHome" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
           <a href="services.html" id="footerServices" data-ar="الخدمات" data-en="Services">الخدمات</a>
           <a href="about.html" id="footerAbout" data-ar="عن الشركة" data-en="About Us">عن الشركة</a>
+          <a href="Track Shipment.html" id="footerTrack" data-ar="تتبع الشحنة" data-en="Track Shipment">تتبع الشحنة</a>
           <a href="#quote" id="footerQuote" data-ar="طلب عرض سعر" data-en="Get a Quote">طلب عرض سعر</a>
         </div>
       </div>
@@ -934,191 +931,95 @@
 
   // Newsletter subscription
   const newsletterBtn = document.querySelector('.newsletter-form button');
-  if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert('📧 تم الاشتراك بنجاح!'); inp.value=''; } else alert('الرجاء إدخال بريد إلكتروني'); });
+  if(newsletterBtn) newsletterBtn.addEventListener('click', () => { const inp = document.querySelector('.newsletter-form input'); if(inp.value.trim() !== '') { alert(currentLang === 'ar' ? '📧 تم الاشتراك بنجاح!' : '📧 Subscribed successfully!'); inp.value=''; } else alert(currentLang === 'ar' ? 'الرجاء إدخال بريد إلكتروني' : 'Please enter an email'); });
 
-  // ----- EMAIL SUBMISSION (FormSubmit.co) -----
+  // Email form submission
   const quoteForm = document.getElementById('quickQuoteForm');
   if(quoteForm) {
     quoteForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      
-      // Collect form data
       const name = document.getElementById('nameInput').value.trim();
       const email = document.getElementById('emailInput').value.trim();
       const phone = document.getElementById('phoneInput').value.trim();
       const serviceSelect = document.getElementById('serviceSelect');
       const service = serviceSelect.options[serviceSelect.selectedIndex]?.text || '';
       const message = document.getElementById('messageInput').value.trim();
-      
       if(!name || !email) {
         alert(currentLang === 'ar' ? 'الرجاء ملء الاسم والبريد الإلكتروني' : 'Please fill in name and email');
         return;
       }
-      
-      // Use FormSubmit.co free endpoint to send to info@hubway.sa
       const submitUrl = 'https://formsubmit.co/ajax/info@hubway.sa';
-      
       try {
         const response = await fetch(submitUrl, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name: name,
-            email: email,
-            phone: phone,
-            service: service,
-            message: message,
-            _subject: `طلب خدمة جديد من ${name}`,
-            _template: 'table',
-            _captcha: 'false'
-          })
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ name, email, phone, service, message, _subject: `طلب خدمة جديد من ${name}`, _template: 'table', _captcha: 'false' })
         });
-        
         if(response.ok) {
           alert(currentLang === 'ar' ? '✅ تم إرسال طلبك بنجاح! سيتواصل معك فريق HUBWAY خلال 24 ساعة.' : '✅ Your request has been sent successfully! HUBWAY team will contact you within 24 hours.');
           quoteForm.reset();
-        } else {
-          throw new Error('Server error');
-        }
+        } else throw new Error('Server error');
       } catch(error) {
-        console.error('Error sending email:', error);
         alert(currentLang === 'ar' ? '❌ حدث خطأ أثناء الإرسال. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة.' : '❌ An error occurred. Please try again or contact us directly.');
       }
     });
   }
 
-  // Full Language Switcher (Arabic/English)
+  // Full Language Switcher
   let currentLang = 'ar';
   const langBtn = document.getElementById('langToggle');
 
   const translations = {
     ar: {
-      logoSubtitle: 'حلول لوجستية سريعة',
-      navContact: 'اتصل بنا',
-      mobileContact: 'اتصل بنا',
-      heroTitle: 'حلول لوجستية <span>سريعة وموثوقة</span>',
-      heroDesc: 'HUBWAY هي شريكك الموثوق في حلول النقل والشحن السريع. نقدم خدمات لوجستية متكاملة بأعلى معايير الأمان والسرعة، لنقل أعمالك نحو العالمية.',
-      heroQuote: 'طلب عرض سعر ←',
-      heroExplore: 'استكشف الخدمات ↓',
-      stat1: 'أسطول شاحنات',
-      stat2: 'تسليم في الوقت',
-      stat3: 'دعم العملاء',
-      servicesBadge: 'خبراتنا',
-      servicesTitle: 'حلول لوجستية متكاملة',
-      service1Title: 'النقل',
-      service1Desc: 'نقل احترافي سريع مع أسطول حديث ومتابعة لحظية لشحناتك.',
-      service2Title: 'التخزين',
-      service2Desc: 'مستودعات ذكية وحلول تخزين آمنة تلبي جميع متطلباتك.',
-      service3Title: 'دعم 24/7',
-      service3Desc: 'فريق دعم متكامل حول الساعة للإجابة والمساعدة الفورية.',
-      service4Title: 'توصيل سريع',
-      service4Desc: 'توصيل فائق السرعة مع ضمان سلامة البضائع حتى آخر ميل.',
-      whyBadge: 'لماذا HUBWAY',
-      whyTitle: 'نعيد تعريف التميز اللوجستي',
-      why1Title: 'شبكة عالمية',
-      why1Desc: 'شراكات عالمية ومكاتب موزعة في 4 قارات لضمان وصول سريع.',
-      why2Title: 'تتبع فوري',
-      why2Desc: 'نظام تتبع متطور يتيح لك متابعة شحنتك خطوة بخطوة.',
-      why3Title: 'حماية البضائع',
-      why3Desc: 'تأمين كامل على جميع الشحنات ضد المخاطر والظروف الطارئة.',
-      why4Title: 'الالتزام بالوقت',
-      why4Desc: 'التسليم في الوقت المحدد هو أولويتنا مع مرونة عالية.',
-      quoteTitle: '<i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟',
-      quoteDesc: 'احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.',
-      hotlineLabel: 'الخط الساخن',
-      emailLabel: 'البريد الإلكتروني',
-      addressLabel: 'المقر الرئيسي',
-      namePlaceholder: 'الاسم كاملاً *',
-      emailPlaceholder: 'البريد الإلكتروني *',
-      phonePlaceholder: 'رقم الجوال',
-      selectDefault: 'اختر نوع الخدمة',
-      selectFreight: 'النقل البري',
-      selectWarehouse: 'التخزين',
-      selectExpress: 'التوصيل السريع',
-      selectIntl: 'الشحن الدولي',
-      messagePlaceholder: 'تفاصيل الشحنة أو الرسالة...',
-      submitBtn: 'إرسال الطلب',
+      logoSubtitle: 'حلول لوجستية سريعة', navContact: 'اتصل بنا', mobileContact: 'اتصل بنا',
+      heroTitle: 'حلول لوجستية <span>سريعة وموثوقة</span>', heroDesc: 'HUBWAY هي شريكك الموثوق في حلول النقل والشحن السريع. نقدم خدمات لوجستية متكاملة بأعلى معايير الأمان والسرعة، لنقل أعمالك نحو العالمية.',
+      heroQuote: 'طلب عرض سعر ←', heroExplore: 'استكشف الخدمات ↓',
+      stat1: 'أسطول شاحنات', stat2: 'تسليم في الوقت', stat3: 'دعم العملاء',
+      servicesBadge: 'خبراتنا', servicesTitle: 'حلول لوجستية متكاملة',
+      service1Title: 'النقل', service1Desc: 'نقل احترافي سريع مع أسطول حديث ومتابعة لحظية لشحناتك.',
+      service2Title: 'التخزين', service2Desc: 'مستودعات ذكية وحلول تخزين آمنة تلبي جميع متطلباتك.',
+      service3Title: 'دعم 24/7', service3Desc: 'فريق دعم متكامل حول الساعة للإجابة والمساعدة الفورية.',
+      service4Title: 'توصيل سريع', service4Desc: 'توصيل فائق السرعة مع ضمان سلامة البضائع حتى آخر ميل.',
+      whyBadge: 'لماذا HUBWAY', whyTitle: 'نعيد تعريف التميز اللوجستي',
+      why1Title: 'شبكة عالمية', why1Desc: 'شراكات عالمية ومكاتب موزعة في 4 قارات لضمان وصول سريع.',
+      why2Title: 'تتبع فوري', why2Desc: 'نظام تتبع متطور يتيح لك متابعة شحنتك خطوة بخطوة.',
+      why3Title: 'حماية البضائع', why3Desc: 'تأمين كامل على جميع الشحنات ضد المخاطر والظروف الطارئة.',
+      why4Title: 'الالتزام بالوقت', why4Desc: 'التسليم في الوقت المحدد هو أولويتنا مع مرونة عالية.',
+      quoteTitle: '<i class="fas fa-headset"></i> تحتاج دعماً لوجستياً؟', quoteDesc: 'احصل على عرض سعر فوري لشحناتك. فريقنا سيتواصل معك في أقل من ٢٤ ساعة لتخصيص الحل الأنسب.',
+      hotlineLabel: 'الخط الساخن', emailLabel: 'البريد الإلكتروني', addressLabel: 'المقر الرئيسي',
+      namePlaceholder: 'الاسم كاملاً *', emailPlaceholder: 'البريد الإلكتروني *', phonePlaceholder: 'رقم الجوال',
+      selectDefault: 'اختر نوع الخدمة', selectFreight: 'النقل البري', selectWarehouse: 'التخزين', selectExpress: 'التوصيل السريع', selectIntl: 'الشحن الدولي',
+      messagePlaceholder: 'تفاصيل الشحنة أو الرسالة...', submitBtn: 'إرسال الطلب',
       footerDesc: 'حلول لوجستية مبتكرة وسريعة تربط الأسواق بثقة. أكثر من ١٠ سنوات من التميز في النقل والتخزين.',
-      quickLinksTitle: 'روابط سريعة',
-      footerHome: 'الرئيسية',
-      footerServices: 'الخدمات',
-      footerAbout: 'عن الشركة',
-      footerQuote: 'طلب عرض سعر',
-      servicesListTitle: 'خدماتنا',
-      footerService1: 'النقل البري',
-      footerService2: 'الشحن البحري',
-      footerService3: 'التخزين اللوجستي',
-      footerService4: 'الشحن الجوي',
-      newsletterTitle: 'النشرة البريدية',
-      newsletterDesc: 'اشترك لتحصل على آخر العروض وأخبار الخدمات اللوجستية.',
-      newsletterPlaceholder: 'بريدك الإلكتروني',
-      newsletterBtnText: 'اشتراك',
+      quickLinksTitle: 'روابط سريعة', footerHome: 'الرئيسية', footerServices: 'الخدمات', footerAbout: 'عن الشركة', footerTrack: 'تتبع الشحنة', footerQuote: 'طلب عرض سعر',
+      servicesListTitle: 'خدماتنا', footerService1: 'النقل البري', footerService2: 'الشحن البحري', footerService3: 'التخزين اللوجستي', footerService4: 'الشحن الجوي',
+      newsletterTitle: 'النشرة البريدية', newsletterDesc: 'اشترك لتحصل على آخر العروض وأخبار الخدمات اللوجستية.', newsletterPlaceholder: 'بريدك الإلكتروني', newsletterBtnText: 'اشتراك',
       copyright: '© 2025 HUBWAY Logistics | جميع الحقوق محفوظة | حلول نقل بمعايير عالمية'
     },
     en: {
-      logoSubtitle: 'Fast Logistics Solutions',
-      navContact: 'Contact Us',
-      mobileContact: 'Contact Us',
-      heroTitle: 'Fast & Reliable <span>Logistics Solutions</span>',
-      heroDesc: 'HUBWAY is your trusted partner in fast shipping and logistics solutions. We provide integrated logistics services with the highest standards of safety and speed, moving your business forward globally.',
-      heroQuote: 'Request a Quote →',
-      heroExplore: 'Explore Services ↓',
-      stat1: 'Fleet Vehicles',
-      stat2: 'On-Time Delivery',
-      stat3: '24/7 Support',
-      servicesBadge: 'Our Expertise',
-      servicesTitle: 'Integrated Logistics Solutions',
-      service1Title: 'Transportation',
-      service1Desc: 'Professional fast transport with modern fleet and real-time tracking.',
-      service2Title: 'Warehousing',
-      service2Desc: 'Smart warehouses and secure storage solutions for all your needs.',
-      service3Title: '24/7 Support',
-      service3Desc: 'Integrated support team available 24/7 for immediate assistance.',
-      service4Title: 'Fast Delivery',
-      service4Desc: 'Ultra-fast delivery ensuring cargo safety to the last mile.',
-      whyBadge: 'Why HUBWAY',
-      whyTitle: 'Redefining Logistics Excellence',
-      why1Title: 'Global Network',
-      why1Desc: 'Global partnerships and offices across 4 continents for fast reach.',
-      why2Title: 'Real-Time Tracking',
-      why2Desc: 'Advanced tracking system to follow your shipment step by step.',
-      why3Title: 'Cargo Protection',
-      why3Desc: 'Full insurance on all shipments against risks and emergencies.',
-      why4Title: 'Time-Critical',
-      why4Desc: 'On-time delivery is our priority with high flexibility.',
-      quoteTitle: '<i class="fas fa-headset"></i> Need Logistics Support?',
-      quoteDesc: 'Get an instant quote for your shipments. Our team will contact you within 24h to tailor the best solution.',
-      hotlineLabel: 'Hotline',
-      emailLabel: 'Email',
-      addressLabel: 'HQ Office',
-      namePlaceholder: 'Full Name *',
-      emailPlaceholder: 'Email Address *',
-      phonePlaceholder: 'Phone Number',
-      selectDefault: 'Select Service Type',
-      selectFreight: 'Freight Transport',
-      selectWarehouse: 'Warehousing',
-      selectExpress: 'Express Delivery',
-      selectIntl: 'International Shipping',
-      messagePlaceholder: 'Message or cargo details...',
-      submitBtn: 'Send Request',
+      logoSubtitle: 'Fast Logistics Solutions', navContact: 'Contact Us', mobileContact: 'Contact Us',
+      heroTitle: 'Fast & Reliable <span>Logistics Solutions</span>', heroDesc: 'HUBWAY is your trusted partner in fast shipping and logistics solutions. We provide integrated logistics services with the highest standards of safety and speed, moving your business forward globally.',
+      heroQuote: 'Request a Quote →', heroExplore: 'Explore Services ↓',
+      stat1: 'Fleet Vehicles', stat2: 'On-Time Delivery', stat3: '24/7 Support',
+      servicesBadge: 'Our Expertise', servicesTitle: 'Integrated Logistics Solutions',
+      service1Title: 'Transportation', service1Desc: 'Professional fast transport with modern fleet and real-time tracking.',
+      service2Title: 'Warehousing', service2Desc: 'Smart warehouses and secure storage solutions for all your needs.',
+      service3Title: '24/7 Support', service3Desc: 'Integrated support team available 24/7 for immediate assistance.',
+      service4Title: 'Fast Delivery', service4Desc: 'Ultra-fast delivery ensuring cargo safety to the last mile.',
+      whyBadge: 'Why HUBWAY', whyTitle: 'Redefining Logistics Excellence',
+      why1Title: 'Global Network', why1Desc: 'Global partnerships and offices across 4 continents for fast reach.',
+      why2Title: 'Real-Time Tracking', why2Desc: 'Advanced tracking system to follow your shipment step by step.',
+      why3Title: 'Cargo Protection', why3Desc: 'Full insurance on all shipments against risks and emergencies.',
+      why4Title: 'Time-Critical', why4Desc: 'On-time delivery is our priority with high flexibility.',
+      quoteTitle: '<i class="fas fa-headset"></i> Need Logistics Support?', quoteDesc: 'Get an instant quote for your shipments. Our team will contact you within 24h to tailor the best solution.',
+      hotlineLabel: 'Hotline', emailLabel: 'Email', addressLabel: 'HQ Office',
+      namePlaceholder: 'Full Name *', emailPlaceholder: 'Email Address *', phonePlaceholder: 'Phone Number',
+      selectDefault: 'Select Service Type', selectFreight: 'Freight Transport', selectWarehouse: 'Warehousing', selectExpress: 'Express Delivery', selectIntl: 'International Shipping',
+      messagePlaceholder: 'Message or cargo details...', submitBtn: 'Send Request',
       footerDesc: 'Innovative and fast logistics solutions connecting markets with confidence. Over 10 years of excellence in transport and warehousing.',
-      quickLinksTitle: 'Quick Links',
-      footerHome: 'Home',
-      footerServices: 'Services',
-      footerAbout: 'About Us',
-      footerQuote: 'Get a Quote',
-      servicesListTitle: 'Our Services',
-      footerService1: 'Ground Freight',
-      footerService2: 'Ocean Freight',
-      footerService3: '3PL Warehousing',
-      footerService4: 'Air Cargo',
-      newsletterTitle: 'Newsletter',
-      newsletterDesc: 'Subscribe to get the latest offers and logistics news.',
-      newsletterPlaceholder: 'Your email address',
-      newsletterBtnText: 'Subscribe',
+      quickLinksTitle: 'Quick Links', footerHome: 'Home', footerServices: 'Services', footerAbout: 'About Us', footerTrack: 'Track Shipment', footerQuote: 'Get a Quote',
+      servicesListTitle: 'Our Services', footerService1: 'Ground Freight', footerService2: 'Ocean Freight', footerService3: '3PL Warehousing', footerService4: 'Air Cargo',
+      newsletterTitle: 'Newsletter', newsletterDesc: 'Subscribe to get the latest offers and logistics news.', newsletterPlaceholder: 'Your email address', newsletterBtnText: 'Subscribe',
       copyright: '© 2025 HUBWAY Logistics | All rights reserved | Global logistics solutions'
     }
   };
@@ -1126,41 +1027,41 @@
   function applyLanguage(lang) {
     const t = translations[lang];
     if (!t) return;
-    document.getElementById('logoSubtitle').textContent = t.logoSubtitle;
-    document.getElementById('navContactBtn').textContent = t.navContact;
-    document.getElementById('mobileContactBtn').textContent = t.mobileContact;
+    document.getElementById('logoSubtitle').innerText = t.logoSubtitle;
+    document.getElementById('navContactBtn').innerText = t.navContact;
+    document.getElementById('mobileContactBtn').innerText = t.mobileContact;
     document.getElementById('heroTitle').innerHTML = t.heroTitle;
-    document.getElementById('heroDesc').textContent = t.heroDesc;
-    document.getElementById('heroQuoteBtn').textContent = t.heroQuote;
-    document.getElementById('heroExploreBtn').textContent = t.heroExplore;
-    document.getElementById('stat1').textContent = t.stat1;
-    document.getElementById('stat2').textContent = t.stat2;
-    document.getElementById('stat3').textContent = t.stat3;
-    document.getElementById('servicesBadge').textContent = t.servicesBadge;
-    document.getElementById('servicesTitle').textContent = t.servicesTitle;
-    document.getElementById('service1Title').textContent = t.service1Title;
-    document.getElementById('service1Desc').textContent = t.service1Desc;
-    document.getElementById('service2Title').textContent = t.service2Title;
-    document.getElementById('service2Desc').textContent = t.service2Desc;
-    document.getElementById('service3Title').textContent = t.service3Title;
-    document.getElementById('service3Desc').textContent = t.service3Desc;
-    document.getElementById('service4Title').textContent = t.service4Title;
-    document.getElementById('service4Desc').textContent = t.service4Desc;
-    document.getElementById('whyBadge').textContent = t.whyBadge;
-    document.getElementById('whyTitle').textContent = t.whyTitle;
-    document.getElementById('why1Title').textContent = t.why1Title;
-    document.getElementById('why1Desc').textContent = t.why1Desc;
-    document.getElementById('why2Title').textContent = t.why2Title;
-    document.getElementById('why2Desc').textContent = t.why2Desc;
-    document.getElementById('why3Title').textContent = t.why3Title;
-    document.getElementById('why3Desc').textContent = t.why3Desc;
-    document.getElementById('why4Title').textContent = t.why4Title;
-    document.getElementById('why4Desc').textContent = t.why4Desc;
+    document.getElementById('heroDesc').innerText = t.heroDesc;
+    document.getElementById('heroQuoteBtn').innerHTML = t.heroQuote;
+    document.getElementById('heroExploreBtn').innerHTML = t.heroExplore;
+    document.getElementById('stat1').innerText = t.stat1;
+    document.getElementById('stat2').innerText = t.stat2;
+    document.getElementById('stat3').innerText = t.stat3;
+    document.getElementById('servicesBadge').innerText = t.servicesBadge;
+    document.getElementById('servicesTitle').innerText = t.servicesTitle;
+    document.getElementById('service1Title').innerText = t.service1Title;
+    document.getElementById('service1Desc').innerText = t.service1Desc;
+    document.getElementById('service2Title').innerText = t.service2Title;
+    document.getElementById('service2Desc').innerText = t.service2Desc;
+    document.getElementById('service3Title').innerText = t.service3Title;
+    document.getElementById('service3Desc').innerText = t.service3Desc;
+    document.getElementById('service4Title').innerText = t.service4Title;
+    document.getElementById('service4Desc').innerText = t.service4Desc;
+    document.getElementById('whyBadge').innerText = t.whyBadge;
+    document.getElementById('whyTitle').innerText = t.whyTitle;
+    document.getElementById('why1Title').innerText = t.why1Title;
+    document.getElementById('why1Desc').innerText = t.why1Desc;
+    document.getElementById('why2Title').innerText = t.why2Title;
+    document.getElementById('why2Desc').innerText = t.why2Desc;
+    document.getElementById('why3Title').innerText = t.why3Title;
+    document.getElementById('why3Desc').innerText = t.why3Desc;
+    document.getElementById('why4Title').innerText = t.why4Title;
+    document.getElementById('why4Desc').innerText = t.why4Desc;
     document.getElementById('quoteTitle').innerHTML = t.quoteTitle;
-    document.getElementById('quoteDesc').textContent = t.quoteDesc;
-    document.getElementById('hotlineLabel').textContent = t.hotlineLabel;
-    document.getElementById('emailLabel').textContent = t.emailLabel;
-    document.getElementById('addressLabel').textContent = t.addressLabel;
+    document.getElementById('quoteDesc').innerText = t.quoteDesc;
+    document.getElementById('hotlineLabel').innerText = t.hotlineLabel;
+    document.getElementById('emailLabel').innerText = t.emailLabel;
+    document.getElementById('addressLabel').innerText = t.addressLabel;
     document.getElementById('nameInput').placeholder = t.namePlaceholder;
     document.getElementById('emailInput').placeholder = t.emailPlaceholder;
     document.getElementById('phoneInput').placeholder = t.phonePlaceholder;
@@ -1172,23 +1073,25 @@
     selectEl.options[4].text = t.selectIntl;
     document.getElementById('messageInput').placeholder = t.messagePlaceholder;
     document.getElementById('submitBtn').innerHTML = t.submitBtn + ' <i class="fas fa-paper-plane"></i>';
-    document.getElementById('footerDesc').textContent = t.footerDesc;
-    document.getElementById('quickLinksTitle').textContent = t.quickLinksTitle;
-    document.getElementById('footerHome').textContent = t.footerHome;
-    document.getElementById('footerServices').textContent = t.footerServices;
-    document.getElementById('footerAbout').textContent = t.footerAbout;
-    document.getElementById('footerQuote').textContent = t.footerQuote;
-    document.getElementById('servicesListTitle').textContent = t.servicesListTitle;
-    document.getElementById('footerService1').textContent = t.footerService1;
-    document.getElementById('footerService2').textContent = t.footerService2;
-    document.getElementById('footerService3').textContent = t.footerService3;
-    document.getElementById('footerService4').textContent = t.footerService4;
-    document.getElementById('newsletterTitle').textContent = t.newsletterTitle;
-    document.getElementById('newsletterDesc').textContent = t.newsletterDesc;
+    document.getElementById('footerDesc').innerText = t.footerDesc;
+    document.getElementById('quickLinksTitle').innerText = t.quickLinksTitle;
+    document.getElementById('footerHome').innerText = t.footerHome;
+    document.getElementById('footerServices').innerText = t.footerServices;
+    document.getElementById('footerAbout').innerText = t.footerAbout;
+    document.getElementById('footerTrack').innerText = t.footerTrack;
+    document.getElementById('footerQuote').innerText = t.footerQuote;
+    document.getElementById('servicesListTitle').innerText = t.servicesListTitle;
+    document.getElementById('footerService1').innerText = t.footerService1;
+    document.getElementById('footerService2').innerText = t.footerService2;
+    document.getElementById('footerService3').innerText = t.footerService3;
+    document.getElementById('footerService4').innerText = t.footerService4;
+    document.getElementById('newsletterTitle').innerText = t.newsletterTitle;
+    document.getElementById('newsletterDesc').innerText = t.newsletterDesc;
     document.getElementById('newsletterEmail').placeholder = t.newsletterPlaceholder;
-    document.getElementById('newsletterBtn').innerHTML = '<i class="fas fa-paper-plane"></i> ' + t.newsletterBtnText;
-    document.getElementById('copyrightText').textContent = t.copyright;
-    
+    const newsBtn = document.getElementById('newsletterBtn');
+    newsBtn.innerHTML = `<i class="fas fa-paper-plane"></i> ${t.newsletterBtnText}`;
+    document.getElementById('copyrightText').innerText = t.copyright;
+
     document.querySelectorAll('.nav-links a, .mobile-nav ul li a').forEach(link => {
       const ar = link.getAttribute('data-ar');
       const en = link.getAttribute('data-en');
